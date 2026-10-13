@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://andoc.dev/schemas/andoc.finalization.v1.schema.json",
+  "title": "ANDoc cryptographic finalization record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "documentId", "revision", "createdAt", "actor", "content", "policy", "signatures"],
+  "properties": {
+    "schema": { "const": "andoc.finalization.v1" },
+    "id": { "$ref": "#/$defs/id" },
+    "documentId": { "$ref": "#/$defs/id" },
+    "revision": { "type": "integer", "minimum": 0 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id"],
+      "properties": {
+        "type": { "enum": ["human", "agent", "import", "system"] },
+        "id": { "$ref": "#/$defs/id" }
+      }
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hashAlgorithm", "canonicalDocumentSha256", "transactionHistorySha256", "humanViewSha256", "protectedEntryRootSha256", "protectedEntryCount"],
+      "properties": {
+        "hashAlgorithm": { "const": "SHA-256" },
+        "canonicalDocumentSha256": { "$ref": "#/$defs/sha256" },
+        "transactionHistorySha256": { "$ref": "#/$defs/sha256" },
+        "humanViewSha256": { "$ref": "#/$defs/sha256" },
+        "profileDeclarationSha256": { "$ref": "#/$defs/sha256" },
+        "protectedEntryRootSha256": { "$ref": "#/$defs/sha256" },
+        "protectedEntryCount": { "type": "integer", "minimum": 3 }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "requiredSignatures"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "requiredSignatures": { "type": "integer", "minimum": 1, "maximum": 32 },
+        "requiredRoles": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "supersedes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finalizationId", "documentId", "revision", "packageSha256", "protectedEntryRootSha256"],
+      "properties": {
+        "finalizationId": { "$ref": "#/$defs/id" },
+        "documentId": { "$ref": "#/$defs/id" },
+        "revision": { "type": "integer", "minimum": 0 },
+        "packageSha256": { "$ref": "#/$defs/sha256" },
+        "protectedEntryRootSha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "signatures": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["algorithm", "keyId", "role", "signedAt", "publicKeySpki", "publicKeySha256", "value"],
+        "properties": {
+          "algorithm": { "const": "Ed25519" },
+          "keyId": { "$ref": "#/$defs/id" },
+          "role": { "type": "string", "minLength": 1 },
+          "signedAt": { "type": "string", "format": "date-time" },
+          "publicKeySpki": { "type": "string", "pattern": "^[A-Za-z0-9+/]+={0,2}$" },
+          "publicKeySha256": { "$ref": "#/$defs/sha256" },
+          "value": { "type": "string", "pattern": "^[A-Za-z0-9+/]+={0,2}$" }
+        }
+      }
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "provider", "payload", "receivedAt"],
+        "properties": {
+          "type": { "enum": ["rfc3161", "transparency-log", "blockchain-anchor", "signed-time-attestation", "agent-attestation"] },
+          "provider": { "type": "string", "minLength": 1 },
+          "payload": { "type": "string", "minLength": 1 },
+          "receivedAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

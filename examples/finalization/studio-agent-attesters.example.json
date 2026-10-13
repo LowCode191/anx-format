@@ -1,0 +1,15 @@
+{
+  "schema": "anx.studio-agent-attesters.v1",
+  "attesters": [
+    {
+      "id": "studio-claude-sonnet-attester",
+      "label": "Studio Claude Sonnet execution attester",
+      "keyPath": "/absolute/path/outside/the/repository/studio-agent-ed25519.pem",
+      "keyId": "studio-agent-key-1",
+      "agentId": "studio-document-agent",
+      "provider": "claude",
+      "model": "sonnet",
+      "enabled": true
+    }
+  ]
+}

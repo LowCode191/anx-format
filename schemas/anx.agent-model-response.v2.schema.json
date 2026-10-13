@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anx.dev/schemas/anx.agent-model-response.v2.schema.json",
+  "title": "ANX Agent Model Response",
+  "description": "Compact provider-facing response contract. ANX deterministically records evidence-tool citations and attaches the complete machine-readable citation and evidence envelope after model generation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "documentId",
+    "task",
+    "limitations"
+  ],
+  "properties": {
+    "schema": {
+      "const": "anx.agent-model-response.v2"
+    },
+    "documentId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task": {
+      "$ref": "#/$defs/task"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "answer",
+        "evidenceJudgment"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceJudgment": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

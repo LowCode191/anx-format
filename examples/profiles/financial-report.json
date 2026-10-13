@@ -1,0 +1,12 @@
+{
+  "schema": "andoc.profiles.v1",
+  "core": { "id": "andoc.profile.core-document", "version": "1.0", "required": true },
+  "profiles": [
+    { "id": "andoc.profile.financial-report", "version": "1.0", "required": true }
+  ],
+  "extensions": [
+    { "id": "andoc.extension.citations-evidence", "version": "1.0", "required": true },
+    { "id": "andoc.extension.typed-values", "version": "1.0", "required": true }
+  ],
+  "template": { "id": "financial-report-periodic", "version": "1.0" }
+}

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+output/
+artifacts/
+tmp/
+coverage/
+docs/dependencies-sbom.cdx.json
+__pycache__/
+*.pyc
+.DS_Store
+*.log

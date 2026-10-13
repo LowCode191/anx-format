@@ -1,0 +1,10 @@
+{
+  "schema": "andoc.trust-store.v1",
+  "keys": [
+    {
+      "keyId": "replace-with-real-key-id",
+      "publicKeySha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "roles": ["author", "reviewer", "approver"]
+    }
+  ]
+}

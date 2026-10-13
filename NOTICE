@@ -1,0 +1,16 @@
+ANX (Agent Native eXtensible) document format - reference implementation
+Copyright 2026 LowCode191
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not
+use this software except in compliance with the License. You may obtain a copy
+of the License in the LICENSE file or at http://www.apache.org/licenses/LICENSE-2.0
+
+The specification and documentation prose under spec/ and docs/ are licensed
+under the Creative Commons Attribution 4.0 International License
+(LICENSE-CC-BY-4.0). JSON Schemas, conformance fixtures, examples, source code
+and scripts are licensed under the Apache License, Version 2.0.
+
+The reference importer invokes Docling (MIT) and RapidOCR with PP-OCRv5 models
+(Apache-2.0) as separately installed local programs. They are not bundled here.
+Runtime dependency licenses are recorded in package-lock.json and in the
+CycloneDX inventory produced by `npm run sbom:generate`.

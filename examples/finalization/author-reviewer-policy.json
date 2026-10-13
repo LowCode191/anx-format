@@ -1,0 +1,5 @@
+{
+  "id": "andoc.policy.author-reviewer.v1",
+  "requiredSignatures": 2,
+  "requiredRoles": ["author", "reviewer"]
+}

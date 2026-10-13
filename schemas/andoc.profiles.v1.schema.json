@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://andoc.dev/schemas/andoc.profiles.v1.schema.json",
+  "title": "ANDoc profile and extension declaration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "core", "profiles", "extensions"],
+  "properties": {
+    "schema": { "const": "andoc.profiles.v1" },
+    "core": { "$ref": "#/$defs/capability" },
+    "profiles": { "type": "array", "items": { "$ref": "#/$defs/capability" } },
+    "extensions": { "type": "array", "items": { "$ref": "#/$defs/capability" } },
+    "template": { "$ref": "#/$defs/template" }
+  },
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^andoc\\.(?:profile|extension)\\.[a-z0-9][a-z0-9-]*$" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+    "capability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "required"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "version": { "$ref": "#/$defs/version" },
+        "required": { "type": "boolean" }
+      }
+    },
+    "template": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$" },
+        "version": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

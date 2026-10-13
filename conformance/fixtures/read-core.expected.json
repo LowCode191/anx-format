@@ -1,0 +1,27 @@
+{
+  "schema": "anx.conformance-expectation.v1",
+  "specification": "ANX Developer Preview 0.4",
+  "maximumReferenceClass": "ANX-C3",
+  "requiredChecks": [
+    "c1-safe-package-validation",
+    "c1-media-type",
+    "c1-byte-preservation",
+    "c2-derived-preview",
+    "c2-finalization-disclosure",
+    "c3-stable-node-index",
+    "c3-revision",
+    "c3-history"
+  ],
+  "expectedStableNodeIds": [
+    "heading-overview",
+    "paragraph-authority",
+    "table-capabilities",
+    "cell-class-header",
+    "cell-behavior-header",
+    "cell-c2",
+    "cell-c2-behavior",
+    "cell-c3",
+    "cell-c3-behavior"
+  ],
+  "prohibitedClaims": ["ANX-C4", "ANX-C5", "universal-fidelity", "universal-ocr-accuracy"]
+}

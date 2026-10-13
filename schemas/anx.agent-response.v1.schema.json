@@ -1,0 +1,307 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anx.dev/schemas/anx.agent-response.v1.schema.json",
+  "title": "ANX Agent Response",
+  "description": "Provider-neutral final response contract. Human answer text remains separate from mandatory machine-readable evidence disclosure.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "documentId",
+    "task",
+    "limitations"
+  ],
+  "properties": {
+    "schema": {
+      "const": "anx.agent-response.v1"
+    },
+    "documentId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task": {
+      "$ref": "#/$defs/task"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "answer",
+        "citations",
+        "evidenceJudgment",
+        "evidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "citations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidenceJudgment": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "representation",
+        "sourceBaseline",
+        "canonicalContentChangedAutomatically",
+        "items"
+      ],
+      "properties": {
+        "schema": {
+          "const": "anx.agent-response-evidence.v1"
+        },
+        "representation": {
+          "enum": [
+            "anx-native",
+            "source-text",
+            "source-image",
+            "unknown"
+          ]
+        },
+        "sourceBaseline": {
+          "$ref": "#/$defs/sourceBaseline"
+        },
+        "canonicalContentChangedAutomatically": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/evidenceItem"
+          }
+        }
+      }
+    },
+    "sourceBaseline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "trusted",
+        "issuerVerified"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "UNVERIFIED_SOURCE",
+            "TAMPERED",
+            "REGISTERED_UNTRUSTED_SIGNER",
+            "REGISTERED_TRUSTED",
+            "UNAVAILABLE",
+            "UNKNOWN"
+          ]
+        },
+        "trusted": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "issuerVerified": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "evidenceItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "evidenceId",
+        "citation",
+        "semanticType",
+        "sourceRepresentation",
+        "dataState",
+        "textQuality",
+        "evidenceStatus",
+        "unattendedUse",
+        "safeForUnattendedAcceptance",
+        "reviewRequired",
+        "dimensions",
+        "anchorStatus"
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "primary",
+            "supporting"
+          ]
+        },
+        "evidenceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "citation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "semanticType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceRepresentation": {
+          "enum": [
+            "text-and-vector",
+            "image-based",
+            "image-based-with-structured-extraction",
+            "vector-rules",
+            "mixed",
+            "native-text",
+            "source-text",
+            "source-image",
+            "unknown",
+            "unavailable",
+            "not-applicable"
+          ]
+        },
+        "dataState": {
+          "enum": [
+            "structured-verified",
+            "structured-unverified",
+            "visual-only",
+            "candidate-only",
+            "unstructured",
+            "canonical-text",
+            "image-only",
+            "unknown",
+            "unavailable",
+            "not-applicable"
+          ]
+        },
+        "textQuality": {
+          "enum": [
+            "native-clean",
+            "native-suspect",
+            "ocr",
+            "derived",
+            "unverified",
+            "unavailable",
+            "not-applicable"
+          ]
+        },
+        "evidenceStatus": {
+          "enum": [
+            "observed",
+            "candidate",
+            "verified",
+            "abstained",
+            "unavailable",
+            "unknown"
+          ]
+        },
+        "unattendedUse": {
+          "enum": [
+            "allowed",
+            "review-required",
+            "abstain",
+            "unavailable",
+            "unknown"
+          ]
+        },
+        "safeForUnattendedAcceptance": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "reviewRequired": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "dimensions": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/dimensions"
+            }
+          ]
+        },
+        "anchorStatus": {
+          "enum": [
+            "resolved",
+            "unresolved",
+            "unanchored",
+            "unavailable",
+            "unknown",
+            "not-applicable"
+          ]
+        }
+      }
+    },
+    "dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rowCount",
+        "columnCount",
+        "disclosure"
+      ],
+      "properties": {
+        "rowCount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "columnCount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "disclosure": {
+          "enum": [
+            "complete",
+            "partial",
+            "unavailable",
+            "not-applicable"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" role="img" aria-label="ANX format — shared document mark">
+  <title>ANX format — shared document mark</title>
+  <g fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.5 1.5h7l3 3v9a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1v-11a1 1 0 0 1 1-1ZM10.5 1.5v3h3M4.5 7.5H6M4.5 11.5H6M8.5 6.5v6"/>
+    <path d="M8.5 7.5h3M8.5 11.5h3" stroke="var(--anx-accent, #06b6d4)"/>
+  </g><g fill="var(--anx-accent, #06b6d4)"><circle cx="11.5" cy="7.5" r=".75"/><circle cx="11.5" cy="11.5" r=".75"/></g>
+</svg>

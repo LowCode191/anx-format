@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anx.dev/schemas/anx.source-baseline.v1.schema.json",
+  "title": "ANX organizational source-baseline registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "activeBaselineId", "records"],
+  "properties": {
+    "schema": { "const": "anx.source-baselines.v1" },
+    "activeBaselineId": { "$ref": "#/$defs/id" },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/record" }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "actorId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@+-]{0,254}$"
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id"],
+      "properties": {
+        "type": { "const": "human" },
+        "id": { "$ref": "#/$defs/actorId" }
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "id",
+        "designation",
+        "documentId",
+        "documentRevisionAtRegistration",
+        "source",
+        "registeredAt",
+        "registeredBy",
+        "description",
+        "acquisition",
+        "issuerVerification",
+        "rights",
+        "statement",
+        "signature"
+      ],
+      "properties": {
+        "schema": { "const": "anx.source-baseline.v1" },
+        "id": { "$ref": "#/$defs/id" },
+        "designation": { "const": "organization-baseline" },
+        "documentId": { "$ref": "#/$defs/id" },
+        "documentRevisionAtRegistration": { "type": "integer", "minimum": 0 },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "fileName", "mediaType", "sha256", "size"],
+          "properties": {
+            "path": { "type": "string", "pattern": "^sources/original/[^/]+$" },
+            "fileName": { "type": "string", "minLength": 1, "maxLength": 512 },
+            "mediaType": { "type": "string", "pattern": "^[^/]+/[^/]+$" },
+            "sha256": { "$ref": "#/$defs/sha256" },
+            "size": { "type": "integer", "minimum": 1 }
+          }
+        },
+        "registeredAt": { "type": "string", "format": "date-time" },
+        "registeredBy": { "$ref": "#/$defs/actor" },
+        "organization": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "description": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["title"],
+          "properties": {
+            "title": { "type": "string", "minLength": 1, "maxLength": 2048 },
+            "publisher": { "type": "string", "minLength": 1, "maxLength": 1024 },
+            "edition": { "type": "string", "minLength": 1, "maxLength": 512 }
+          }
+        },
+        "acquisition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["method"],
+          "properties": {
+            "method": { "enum": ["purchase", "download", "received", "scanned", "other"] },
+            "acquiredAt": { "type": "string", "format": "date-time" },
+            "sourceUri": { "type": "string", "format": "uri-reference", "maxLength": 4096 },
+            "supplier": { "type": "string", "minLength": 1, "maxLength": 1024 },
+            "orderReference": { "type": "string", "minLength": 1, "maxLength": 1024 }
+          }
+        },
+        "supersedes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["documentId", "baselineId", "sourceSha256"],
+          "properties": {
+            "documentId": { "$ref": "#/$defs/id" },
+            "baselineId": { "$ref": "#/$defs/id" },
+            "sourceSha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "issuerVerification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status"],
+          "properties": {
+            "status": { "const": "not-established" }
+          }
+        },
+        "rights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["redistribution"],
+          "properties": {
+            "redistribution": { "const": "not-established" }
+          }
+        },
+        "statement": {
+          "const": "Accepted as the organization's controlled source baseline; issuer authenticity is not independently verified."
+        },
+        "signature": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "algorithm",
+            "keyId",
+            "role",
+            "signedAt",
+            "publicKeySpki",
+            "publicKeySha256",
+            "value"
+          ],
+          "properties": {
+            "algorithm": { "const": "Ed25519" },
+            "keyId": { "$ref": "#/$defs/id" },
+            "role": { "const": "source-baseline-registrar" },
+            "signedAt": { "type": "string", "format": "date-time" },
+            "publicKeySpki": { "type": "string", "minLength": 1 },
+            "publicKeySha256": { "$ref": "#/$defs/sha256" },
+            "value": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "name": "anx-format",
+  "version": "0.4.0",
+  "description": "ANX (Agent Native eXtensible): an open single-file document format with a canonical structured model, retained sources, stable node IDs and revision-checked transactions. Reference SDK, CLI, conformance runner, read-only viewer and MCP servers.",
+  "license": "Apache-2.0",
+  "author": "LowCode191",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LowCode191/anx-format.git"
+  },
+  "homepage": "https://github.com/LowCode191/anx-format#readme",
+  "bugs": {
+    "url": "https://github.com/LowCode191/anx-format/issues"
+  },
+  "keywords": [
+    "anx",
+    "document-format",
+    "agents",
+    "mcp",
+    "pdf",
+    "docx",
+    "provenance",
+    "transactions",
+    "docling"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "bin": {
+    "anx": "dist/cli.js",
+    "anx-mcp": "dist/mcp-server.js",
+    "anx-evidence-mcp": "dist/evidence-mcp-server.js"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "schemas",
+    "spec",
+    "conformance",
+    "config",
+    "scripts/rapidocr_bridge.py",
+    "docs/*.md",
+    "LICENSE",
+    "LICENSE-CC-BY-4.0",
+    "NOTICE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --import tsx --test test/*.test.ts",
+    "check": "npm run build && npm test",
+    "conformance": "node --import tsx src/cli.ts conformance",
+    "anx": "tsx src/cli.ts",
+    "mcp": "tsx src/mcp-server.ts",
+    "evidence-mcp": "tsx src/evidence-mcp-server.ts",
+    "sbom:generate": "node scripts/generate-sbom.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "ajv": "^8.17.1",
+    "fflate": "^0.8.2",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.1.200",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.14",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}

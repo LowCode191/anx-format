@@ -1,0 +1,61 @@
+{
+  "schema": "agn.ocr-engine-policy.v1",
+  "id": "rapidocr-ppocrv5-en-cpu-v3",
+  "engine": "RapidOCR",
+  "engineVersion": "3.6.0",
+  "runtime": "onnxruntime",
+  "language": "en",
+  "render": {
+    "engine": "pypdfium2",
+    "dpi": 180,
+    "pageBatchSize": 4,
+    "adaptive": {
+      "enabled": true,
+      "dpi": 205,
+      "fragmentationRatioThreshold": 2.2
+    }
+  },
+  "parameters": {
+    "useClassification": false,
+    "textScore": 0.5,
+    "maximumImageSide": 3000,
+    "detectorLimitSide": 960,
+    "detectorLimitType": "min",
+    "intraOpThreads": 2,
+    "interOpThreads": 1
+  },
+  "models": [
+    {
+      "role": "detection",
+      "family": "PP-OCRv5",
+      "variant": "ch-mobile",
+      "file": "ch_PP-OCRv5_mobile_det.onnx",
+      "sha256": "4d97c44a20d30a81aad087d6a396b08f786c4635742afc391f6621f5c6ae78ae"
+    },
+    {
+      "role": "recognition",
+      "family": "PP-OCRv5",
+      "variant": "en-mobile",
+      "file": "en_PP-OCRv5_rec_mobile_infer.onnx",
+      "sha256": "c3461add59bb4323ecba96a492ab75e06dda42467c9e3d0c18db5d1d21924be8"
+    }
+  ],
+  "licenses": [
+    {
+      "component": "RapidOCR",
+      "spdx": "Apache-2.0"
+    },
+    {
+      "component": "PaddleOCR PP-OCRv5 models",
+      "spdx": "Apache-2.0"
+    },
+    {
+      "component": "pypdfium2",
+      "spdx": "Apache-2.0 OR BSD-3-Clause"
+    },
+    {
+      "component": "ONNX Runtime",
+      "spdx": "MIT"
+    }
+  ]
+}

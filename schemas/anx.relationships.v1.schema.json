@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anx.dev/schemas/anx.relationships.v1.schema.json",
+  "title": "ANX document relationships",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "relationships"],
+  "properties": {
+    "schema": { "const": "anx.relationships.v1" },
+    "relationships": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": { "$ref": "#/$defs/relationship" }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id"],
+      "properties": {
+        "type": { "enum": ["human", "agent", "import", "system"] },
+        "id": { "$ref": "#/$defs/id" }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "identifier", "title"],
+      "properties": {
+        "kind": { "enum": ["internal-document", "external-document"] },
+        "identifier": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "title": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "revision": { "type": "string", "minLength": 1, "maxLength": 256 },
+        "section": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "publisher": { "type": "string", "minLength": 1, "maxLength": 512 },
+        "uri": { "type": "string", "format": "uri-reference", "maxLength": 2048 }
+      }
+    },
+    "resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "contentAvailable"],
+      "properties": {
+        "status": { "enum": ["resolved", "metadata-only", "unresolved", "restricted"] },
+        "contentAvailable": { "type": "boolean" },
+        "resolvedDocumentId": { "$ref": "#/$defs/id" }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "assertedBy", "assertedAt"],
+      "properties": {
+        "status": { "enum": ["human-approved", "agent-suggested"] },
+        "assertedBy": { "$ref": "#/$defs/actor" },
+        "assertedAt": { "$ref": "#/$defs/timestamp" },
+        "approvedBy": { "$ref": "#/$defs/actor" },
+        "approvedAt": { "$ref": "#/$defs/timestamp" }
+      }
+    },
+    "relationship": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "status",
+        "target",
+        "resolution",
+        "authority",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "type": {
+          "enum": [
+            "references",
+            "governed-by",
+            "derived-from",
+            "supersedes",
+            "claims-conformance-to"
+          ]
+        },
+        "status": { "enum": ["active", "removed"] },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "anchorId": { "$ref": "#/$defs/id" }
+          }
+        },
+        "target": { "$ref": "#/$defs/target" },
+        "resolution": { "$ref": "#/$defs/resolution" },
+        "authority": { "$ref": "#/$defs/authority" },
+        "createdAt": { "$ref": "#/$defs/timestamp" },
+        "updatedAt": { "$ref": "#/$defs/timestamp" },
+        "note": { "type": "string", "maxLength": 2000 },
+        "removedAt": { "$ref": "#/$defs/timestamp" },
+        "removedBy": { "$ref": "#/$defs/actor" }
+      }
+    }
+  }
+}

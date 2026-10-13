@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anx.dev/schemas/anx.region-corrections.v1.schema.json",
+  "title": "ANX human page-object corrections",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "entries"],
+  "properties": {
+    "schema": {
+      "const": "anx.region-corrections.v1"
+    },
+    "entries": {
+      "type": "array",
+      "maxItems": 20000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "regionId",
+          "action",
+          "created",
+          "kind",
+          "page",
+          "bbox",
+          "coordinateOrigin",
+          "sourceRevision",
+          "actor",
+          "updatedAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^correction-[A-Za-z0-9._:-]+$",
+            "maxLength": 200
+          },
+          "regionId": {
+            "type": "string",
+            "pattern": "^region-[A-Za-z0-9._:-]+$",
+            "maxLength": 200
+          },
+          "action": {
+            "enum": ["upsert", "remove"]
+          },
+          "created": {
+            "type": "boolean"
+          },
+          "kind": {
+            "enum": [
+              "table",
+              "text",
+              "note",
+              "caption",
+              "figure",
+              "screenshot",
+              "visualization",
+              "simulation",
+              "infographic",
+              "roster",
+              "logo",
+              "qrCode",
+              "chart",
+              "map",
+              "equation",
+              "handwriting",
+              "signature",
+              "other"
+            ]
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "bbox": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": "number"
+            }
+          },
+          "coordinateOrigin": {
+            "enum": ["TOPLEFT", "BOTTOMLEFT"]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "noteKind": {
+            "enum": ["footnote", "endnote"]
+          },
+          "anchorBlockId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "sourceRevision": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "actor": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "id"],
+            "properties": {
+              "type": {
+                "const": "human"
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 512
+              }
+            }
+          },
+          "updatedAt": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": { "kind": { "const": "note" } },
+              "required": ["kind"]
+            },
+            "then": {
+              "required": ["noteKind"]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

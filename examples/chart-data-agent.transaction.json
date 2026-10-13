@@ -1,0 +1,37 @@
+{
+  "schema": "andoc.transaction.v1",
+  "id": "tx-agent-chart-data-live-001",
+  "baseRevision": 2,
+  "actor": {
+    "type": "agent",
+    "id": "andoc-product-engineer"
+  },
+  "timestamp": "2026-07-15T20:51:29.000Z",
+  "message": "Attach verified structured values from the controlled chart fixture while preserving the imported fallback image and classifier provenance.",
+  "operations": [
+    {
+      "op": "updateChartData",
+      "targetId": "chart-589616c473ec7bc0",
+      "data": {
+        "columns": [
+          "Month",
+          "Net MWh"
+        ],
+        "rows": [
+          ["Jan", 42],
+          ["Feb", 58],
+          ["Mar", 73],
+          ["Apr", 86],
+          ["May", 78]
+        ]
+      },
+      "evidence": {
+        "method": "agent-provided",
+        "source": "controlled-fixture-labels",
+        "verified": true,
+        "confidence": 1,
+        "notes": "Values transcribed from labels intentionally embedded in the controlled ANDoc chart fixture."
+      }
+    }
+  ]
+}

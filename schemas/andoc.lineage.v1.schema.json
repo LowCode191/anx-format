@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://andoc.dev/schemas/andoc.lineage.v1.schema.json",
+  "title": "ANDoc version lineage record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "documentId", "derivedRevision", "derivedAt", "actor", "parent"],
+  "properties": {
+    "schema": { "const": "andoc.lineage.v1" },
+    "documentId": { "$ref": "#/$defs/id" },
+    "derivedRevision": { "type": "integer", "minimum": 1 },
+    "derivedAt": { "type": "string", "format": "date-time" },
+    "actor": { "$ref": "#/$defs/actor" },
+    "parent": {
+      "oneOf": [
+        { "$ref": "#/$defs/embeddedParent" },
+        { "$ref": "#/$defs/referenceParent" }
+      ]
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "parentFields": {
+      "type": "object",
+      "required": ["finalizationId", "documentId", "revision", "packageSha256", "protectedEntryRootSha256"],
+      "properties": {
+        "finalizationId": { "$ref": "#/$defs/id" },
+        "documentId": { "$ref": "#/$defs/id" },
+        "revision": { "type": "integer", "minimum": 0 },
+        "packageSha256": { "$ref": "#/$defs/sha256" },
+        "protectedEntryRootSha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "embeddedParent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finalizationId", "documentId", "revision", "packageSha256", "protectedEntryRootSha256", "packagePath"],
+      "properties": {
+        "finalizationId": { "$ref": "#/$defs/id" },
+        "documentId": { "$ref": "#/$defs/id" },
+        "revision": { "type": "integer", "minimum": 0 },
+        "packageSha256": { "$ref": "#/$defs/sha256" },
+        "protectedEntryRootSha256": { "$ref": "#/$defs/sha256" },
+        "mode": { "const": "embedded" },
+        "packagePath": { "type": "string", "pattern": "^sources/lineage/[a-f0-9]{64}\\.(?:anx|anxd|agn|andoc)$" }
+      }
+    },
+    "referenceParent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finalizationId", "documentId", "revision", "packageSha256", "protectedEntryRootSha256", "mode", "uri"],
+      "properties": {
+        "finalizationId": { "$ref": "#/$defs/id" },
+        "documentId": { "$ref": "#/$defs/id" },
+        "revision": { "type": "integer", "minimum": 0 },
+        "packageSha256": { "$ref": "#/$defs/sha256" },
+        "protectedEntryRootSha256": { "$ref": "#/$defs/sha256" },
+        "mode": { "const": "reference" },
+        "uri": { "type": "string", "format": "uri-reference", "minLength": 1 }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id"],
+      "properties": {
+        "type": { "enum": ["human", "agent", "import", "system"] },
+        "id": { "$ref": "#/$defs/id" }
+      }
+    }
+  }
+}

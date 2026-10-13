@@ -1,0 +1,13 @@
+{
+  "schema": "andoc.profiles.v1",
+  "core": { "id": "andoc.profile.core-document", "version": "1.0", "required": true },
+  "profiles": [
+    { "id": "andoc.profile.controlled-document", "version": "1.0", "required": true }
+  ],
+  "extensions": [
+    { "id": "andoc.extension.edit-policies", "version": "1.0", "required": true },
+    { "id": "andoc.extension.review", "version": "1.0", "required": true },
+    { "id": "andoc.extension.signatures", "version": "1.0", "required": true }
+  ],
+  "template": { "id": "controlled-document-general", "version": "1.0" }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://andoc.dev/schemas/andoc.manifest.v1.schema.json",
+  "title": "ANDoc package manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "formatVersion", "mediaType", "document", "revision", "entries"],
+  "properties": {
+    "schema": { "const": "andoc.manifest.v1" },
+    "formatVersion": { "enum": ["1.0", "1.1"] },
+    "mediaType": { "enum": ["application/anx+zip", "application/agn+zip", "application/vnd.andoc+zip"] },
+    "document": { "const": "document.json" },
+    "revision": { "type": "integer", "minimum": 0 },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "mediaType", "sha256", "size", "role"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "mediaType": { "type": "string", "pattern": "^[^/]+/[^/]+$" },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "size": { "type": "integer", "minimum": 0 },
+          "role": { "enum": ["canonical", "history", "human-view", "asset", "source", "profile", "extension", "lineage", "finalization", "signature", "receipt"] }
+        }
+      }
+    }
+  }
+}

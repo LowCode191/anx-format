@@ -1,0 +1,37 @@
+{
+  "schema": "andoc.transaction.v1",
+  "id": "tx-agent-001",
+  "baseRevision": 0,
+  "actor": {
+    "type": "agent",
+    "id": "andoc-product-engineer"
+  },
+  "timestamp": "2026-07-15T16:05:00.000Z",
+  "message": "Clarify the canonical edit path.",
+  "operations": [
+    {
+      "op": "replaceBlock",
+      "targetId": "paragraph-1",
+      "block": {
+        "id": "paragraph-1",
+        "type": "paragraph",
+        "content": [
+          { "text": "Humans and agents edit one canonical model through the same validated transaction path." }
+        ],
+        "provenance": {
+          "kind": "agent",
+          "sourceId": "tx-agent-001",
+          "capturedAt": "2026-07-15T16:05:00.000Z"
+        }
+      }
+    },
+    {
+      "op": "setDocument",
+      "patch": {
+        "metadata": {
+          "lastEditor": "andoc-product-engineer"
+        }
+      }
+    }
+  ]
+}

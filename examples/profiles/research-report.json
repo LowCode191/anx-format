@@ -1,0 +1,12 @@
+{
+  "schema": "andoc.profiles.v1",
+  "core": { "id": "andoc.profile.core-document", "version": "1.0", "required": true },
+  "profiles": [
+    { "id": "andoc.profile.research-report", "version": "1.0", "required": true }
+  ],
+  "extensions": [
+    { "id": "andoc.extension.citations-evidence", "version": "1.0", "required": true },
+    { "id": "andoc.extension.review", "version": "1.0", "required": true }
+  ],
+  "template": { "id": "research-report-general", "version": "1.0" }
+}

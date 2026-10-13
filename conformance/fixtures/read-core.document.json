@@ -1,0 +1,47 @@
+{
+  "schema": "andoc.document.v1",
+  "documentId": "anx-conformance-read-core",
+  "revision": 0,
+  "title": "ANX Read Conformance",
+  "locale": "en-US",
+  "createdAt": "2026-07-19T20:00:00.000Z",
+  "updatedAt": "2026-07-19T20:00:00.000Z",
+  "metadata": { "purpose": "anx-developer-preview-0.4-conformance" },
+  "assets": {},
+  "blocks": [
+    {
+      "id": "heading-overview",
+      "type": "heading",
+      "level": 1,
+      "content": [{ "text": "One document for people and agents" }],
+      "provenance": { "kind": "human", "capturedAt": "2026-07-19T20:00:00.000Z" }
+    },
+    {
+      "id": "paragraph-authority",
+      "type": "paragraph",
+      "content": [
+        { "text": "Stable nodes", "marks": ["bold"] },
+        { "text": " make canonical reads and revision-checked edits addressable." }
+      ]
+    },
+    {
+      "id": "table-capabilities",
+      "type": "table",
+      "caption": [{ "text": "Reference read classes" }],
+      "rows": [
+        [
+          { "id": "cell-class-header", "header": true, "content": [{ "text": "Class" }] },
+          { "id": "cell-behavior-header", "header": true, "content": [{ "text": "Behavior" }] }
+        ],
+        [
+          { "id": "cell-c2", "content": [{ "text": "ANX-C2" }] },
+          { "id": "cell-c2-behavior", "content": [{ "text": "Safe human preview" }] }
+        ],
+        [
+          { "id": "cell-c3", "content": [{ "text": "ANX-C3" }] },
+          { "id": "cell-c3-behavior", "content": [{ "text": "Stable semantic index" }] }
+        ]
+      ]
+    }
+  ]
+}
