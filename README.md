@@ -5,6 +5,8 @@
 
 # The ANX format (Agent Native eXtensible)
 
+[![CI](https://github.com/LowCode191/anx-format/actions/workflows/ci.yml/badge.svg)](https://github.com/LowCode191/anx-format/actions/workflows/ci.yml)
+
 One file that people and software agents can read, cite, review and change safely.
 
 An ANX document (`.anx`, media type `application/anx+zip`) is an open, portable, single-file package that keeps together:
@@ -30,7 +32,7 @@ This repository is the reference implementation: the core SDK, the `anx` CLI, th
 
 What the retained evidence supports: ANX is a portable, agent-readable document package that keeps structured content, source evidence, stable references and revision history together. Its reference tools enforce validated, revision-checked operations and can reduce retrieval overhead in bounded workflows.
 
-What it does not support: a universal accuracy or cost advantage over well-prepared Markdown, the idea that citations prove every sentence, any claim that documents cannot leak, production security clearance, or market demand. Comparisons against strong Markdown with equivalent metadata came out at parity in the retained runs.
+What it does not support: a universal accuracy or cost advantage over well-prepared Markdown, the idea that citations prove every sentence, any claim that documents cannot leak, production security clearance, or market demand. Comparisons against strong Markdown with equivalent metadata came out at parity in the retained runs; the reproducible public version of that comparison is described under [Testing and evidence](#testing-and-evidence).
 
 ## Requirements
 
@@ -118,12 +120,35 @@ const outline = await anxOutline('examples/sample.anx', 20)
 | `ANX_ALLOWED_ROOT` | Directory the MCP servers may read and write (default: current directory) |
 | `ANX_DOCLING_BIN` | Path to the Docling CLI when it is not on `PATH` |
 | `ANX_DOCLING_PAGE_BATCH_SIZE`, `ANX_DOCLING_THREADS` | Conversion batch size (default 4) and threads (default 2) |
+| `ANX_DOCLING_TIMEOUT_SECONDS` | Per-document Docling time limit in seconds (default 240, maximum 600); raise it for long reports on slower machines |
 | `ANX_DOCLING_VERSION` | Override the Docling version recorded in provenance |
 | `ANX_OCR_ENGINE`, `ANX_OCR_PYTHON`, `ANX_OCR_PAGE_BATCH_SIZE` | Selective OCR engine (default `rapidocr`), Python interpreter and page batch |
 | `ANX_MCP_TOOL_PROFILE` | Tool profile for the evidence server |
 | `ANX_EVIDENCE_TRACE_PATH`, `ANX_REQUIRE_EVIDENCE_TRACE` | Optional evidence trace file for agent reads |
 
 Legacy `AGN_*` and `ANDOC_*` names are still read.
+
+## Testing and evidence
+
+Continuous integration runs on every push and pull request on Node 22 and 24 with Python 3.12 ([ci.yml](.github/workflows/ci.yml)). `npm run check` builds `dist/` and runs the product test suite: 164 tests in 31 files under `test/`, all against self-made fixtures. CI then runs the ANX-C3 conformance check on `examples/sample.anx`, a CLI smoke (pack, validate, migrate, outline) and a type-check of the benchmark harness.
+
+Run the same locally:
+
+```bash
+npm run check
+npm run conformance -- examples/sample.anx ANX-C3
+npm run check:benchmarks
+```
+
+The suite covers package reading and writing, schema validation, revision-checked transactions and conflicts, migrations from the legacy identities, importer and OCR-candidate logic against fixtures, portable exports, finalization and lineage, relationships, release control, the viewer and both MCP servers. It does not cover live Docling conversion of arbitrary documents, model behaviour, or anything that needs the network.
+
+### Markdown parity benchmark
+
+[`benchmarks/markdown-corpus-parity/`](benchmarks/markdown-corpus-parity/README.md) is the reproducible comparison behind the parity sentence above. Twelve freely downloadable public documents are imported once into ANX packages and queried as a corpus through two arms built from the same canonical text: a repository of ANX files, and a strong Markdown repository with frontmatter, declared relationships and file/line citations. A deterministic qualification checks both transports; a live stage lets fresh command-line model sessions answer six cross-document tasks through identical tools.
+
+Latest retained result (2026-10-15, 4 live runs through the Codex CLI, models gpt-5.6-luna, gpt-5.6-sol, gpt-6-astra): over 24 trials per arm, the ANX arm completed 24 tasks within protocol and the strong-Markdown arm 23 (gpt-5.6-luna 12/12 versus 11/12; gpt-5.6-sol 6/6 versus 6/6; gpt-6-astra 6/6 versus 6/6); answers were correct in 24 and 24 trials respectively, and every citation in both arms resolved. The deterministic stage passed all ten gates with both arms at identical document recall and citation resolution. Full record: [results/confirmation.md](benchmarks/markdown-corpus-parity/results/confirmation.md); methodology and reproduction: [benchmarks/markdown-corpus-parity/README.md](benchmarks/markdown-corpus-parity/README.md).
+
+The benchmark does not show a universal advantage for either format and it is not a model leaderboard. Source files are fetched from their publishers by script and are not redistributed; the retained results and transcripts quote the passages the corpus tools returned, which is permitted for every document in the corpus (United States government works, California public records, and two arXiv papers under CC BY 4.0 with attribution in the manifest).
 
 ## Conformance classes
 
@@ -153,6 +178,7 @@ Every package is treated as hostile input. Readers reject traversal, absolute pa
 | `test/` | Product tests with self-made fixtures |
 | `examples/` | Sample packages in the current and legacy identities, profiles, policies |
 | `config/`, `scripts/` | Pinned OCR engine policy, the RapidOCR bridge and the SBOM generator |
+| `benchmarks/` | Reproducible Markdown parity benchmark: corpus manifest, fetch and import scripts, frozen tasks, runners and retained results |
 
 ## Roadmap
 

@@ -1,0 +1,864 @@
+{
+  "schema": "anx.corpus-preparation.v1",
+  "benchmarkId": "markdown-corpus-parity-v1",
+  "generatedAt": "2026-10-15T16:08:40.236Z",
+  "importer": {
+    "command": "anx import-document (reference CLI; Docling for PDF layout and DOCX conversion)",
+    "node": "v26.4.0",
+    "docling": "Docling version: 2.76.0; Docling Core version: 2.66.0; Docling IBM Models version: 3.11.0; Docling Parse version: 5.4.0; Python: cpython-312 (3.12.0)",
+    "platform": "darwin-arm64"
+  },
+  "status": "passed",
+  "summary": {
+    "documentsPlanned": 12,
+    "documentsCompleted": 12,
+    "documentsPassed": 12,
+    "totalSourceBytes": 36623510,
+    "totalPackageBytes": 56665226,
+    "totalSourcePages": 470,
+    "medianImportTimeMs": 20412.862,
+    "maximumPeakRssBytes": 11722833920
+  },
+  "documents": [
+    {
+      "id": "doc-001",
+      "format": "pdf",
+      "title": "Monetary Policy Report June 2025",
+      "status": "passed",
+      "sourcePath": "corpus/sources/pdf/doc-001-fed-monetary-policy-report-2025-06.pdf",
+      "sourceSha256": "6f8538cb4ce2902ac35cc9ec8311feda6c5c94953b76db50de94192741bb07f4",
+      "sourceBytes": 2226758,
+      "sourcePages": 81,
+      "packagePath": "corpus/packages/doc-001-fed-monetary-policy-report-2025-06.anx",
+      "packageSha256": "093dcf74d99bd274810063daa389476eac085ae6680ab1044d08c3cbef3809cb",
+      "packageBytes": 9272712,
+      "packageToSourceSizeRatio": 4.164,
+      "import": {
+        "reused": true,
+        "wallTimeMs": 40445.767,
+        "peakRssBytes": 11458805760,
+        "importerStats": {
+          "sourceFormat": "pdf",
+          "pageCount": 81,
+          "headingBlocks": 127,
+          "paragraphBlocks": 253,
+          "tableBlocks": 6,
+          "imageBlocks": 7,
+          "chartBlocks": 67,
+          "chartBlocksWithData": 0,
+          "pictureItems": 74,
+          "pictureItemsNotYetMapped": 0,
+          "textQualityPagesRequiringOcr": 11,
+          "textQualityCorruptedPages": 0,
+          "selectiveOcrCandidatePages": 0,
+          "sourceBytes": 2226758,
+          "importTelemetry": {
+            "schema": "agn.import-telemetry.v2",
+            "measurementScope": "node-importer-and-child-processes",
+            "childMemoryMetric": "sum-rss-descendant-process-tree",
+            "childPeakRssBytes": 11470487552,
+            "samplingIntervalMs": 250,
+            "stages": [
+              {
+                "stage": "source-staged",
+                "rssBytes": 331644928,
+                "elapsedMs": 0
+              },
+              {
+                "stage": "initial-docling-complete",
+                "rssBytes": 436682752,
+                "elapsedMs": 38832.729
+              }
+            ],
+            "doclingRuns": [
+              {
+                "ocr": false,
+                "forceOcr": false,
+                "classifyPictures": true,
+                "pageBatchSize": 4,
+                "threads": 4,
+                "durationMs": 38792.253,
+                "childPeakRssBytes": 11470487552
+              }
+            ]
+          }
+        },
+        "warnings": null
+      },
+      "validationOk": true,
+      "blocks": 561,
+      "pageBreaks": 74,
+      "canonicalCharacters": 122401
+    },
+    {
+      "id": "doc-002",
+      "format": "pdf",
+      "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "status": "passed",
+      "sourcePath": "corpus/sources/pdf/doc-002-nist-ai-rmf-1-0.pdf",
+      "sourceSha256": "7576edb531d9848825814ee88e28b1795d3a84b435b4b797d3670eafdc4a89f1",
+      "sourceBytes": 1946127,
+      "sourcePages": 48,
+      "packagePath": "corpus/packages/doc-002-nist-ai-rmf-1-0.anx",
+      "packageSha256": "df7c037cafc8ea4dc1691e013a95c01fd22d80aeea7b4440276ea93bafaecba9",
+      "packageBytes": 3012710,
+      "packageToSourceSizeRatio": 1.548,
+      "import": {
+        "reused": true,
+        "wallTimeMs": 25497.554,
+        "peakRssBytes": 8373485568,
+        "importerStats": {
+          "sourceFormat": "pdf",
+          "pageCount": 48,
+          "headingBlocks": 37,
+          "paragraphBlocks": 247,
+          "tableBlocks": 12,
+          "imageBlocks": 5,
+          "chartBlocks": 4,
+          "chartBlocksWithData": 0,
+          "pictureItems": 9,
+          "pictureItemsNotYetMapped": 0,
+          "textQualityPagesRequiringOcr": 1,
+          "textQualityCorruptedPages": 0,
+          "selectiveOcrCandidatePages": 0,
+          "sourceBytes": 1946127,
+          "importTelemetry": {
+            "schema": "agn.import-telemetry.v2",
+            "measurementScope": "node-importer-and-child-processes",
+            "childMemoryMetric": "sum-rss-descendant-process-tree",
+            "childPeakRssBytes": 8390688768,
+            "samplingIntervalMs": 250,
+            "stages": [
+              {
+                "stage": "source-staged",
+                "rssBytes": 328007680,
+                "elapsedMs": 0
+              },
+              {
+                "stage": "initial-docling-complete",
+                "rssBytes": 393576448,
+                "elapsedMs": 24113.386
+              }
+            ],
+            "doclingRuns": [
+              {
+                "ocr": false,
+                "forceOcr": false,
+                "classifyPictures": true,
+                "pageBatchSize": 4,
+                "threads": 4,
+                "durationMs": 24091.735,
+                "childPeakRssBytes": 8390688768
+              }
+            ]
+          }
+        },
+        "warnings": null
+      },
+      "validationOk": true,
+      "blocks": 352,
+      "pageBreaks": 47,
+      "canonicalCharacters": 103265
+    },
+    {
+      "id": "doc-003",
+      "format": "pdf",
+      "title": "Docling Technical Report",
+      "status": "passed",
+      "sourcePath": "corpus/sources/pdf/doc-003-docling-technical-report-v5.pdf",
+      "sourceSha256": "82dd470712ce8389f19f20eb9330475e2166a281f8c7990a9f1d0763d73b4d22",
+      "sourceBytes": 5566575,
+      "sourcePages": 9,
+      "packagePath": "corpus/packages/doc-003-docling-technical-report-v5.anx",
+      "packageSha256": "c280dd3efa885a2757cf1bd386c7fe16220775523bd3091aa3bf8a2e50273cd0",
+      "packageBytes": 5900599,
+      "packageToSourceSizeRatio": 1.06,
+      "import": {
+        "reused": true,
+        "wallTimeMs": 11641.562,
+        "peakRssBytes": 4336582656,
+        "importerStats": {
+          "sourceFormat": "pdf",
+          "pageCount": 9,
+          "headingBlocks": 21,
+          "paragraphBlocks": 81,
+          "tableBlocks": 2,
+          "imageBlocks": 3,
+          "chartBlocks": 2,
+          "chartBlocksWithData": 0,
+          "pictureItems": 5,
+          "pictureItemsNotYetMapped": 0,
+          "textQualityPagesRequiringOcr": 0,
+          "textQualityCorruptedPages": 0,
+          "selectiveOcrCandidatePages": 0,
+          "sourceBytes": 5566575,
+          "importTelemetry": {
+            "schema": "agn.import-telemetry.v2",
+            "measurementScope": "node-importer-and-child-processes",
+            "childMemoryMetric": "sum-rss-descendant-process-tree",
+            "childPeakRssBytes": 4338958336,
+            "samplingIntervalMs": 250,
+            "stages": [
+              {
+                "stage": "source-staged",
+                "rssBytes": 341721088,
+                "elapsedMs": 0
+              },
+              {
+                "stage": "initial-docling-complete",
+                "rssBytes": 373768192,
+                "elapsedMs": 9844.657
+              }
+            ],
+            "doclingRuns": [
+              {
+                "ocr": false,
+                "forceOcr": false,
+                "classifyPictures": true,
+                "pageBatchSize": 4,
+                "threads": 4,
+                "durationMs": 9838.735,
+                "childPeakRssBytes": 4338958336
+              }
+            ]
+          }
+        },
+        "warnings": null
+      },
+      "validationOk": true,
+      "blocks": 118,
+      "pageBreaks": 8,
+      "canonicalCharacters": 26724
+    },
+    {
+      "id": "doc-004",
+      "format": "pdf",
+      "title": "SmolDocling: An ultra-compact vision-language model for end-to-end multi-modal document conversion",
+      "status": "passed",
+      "sourcePath": "corpus/sources/pdf/doc-004-smoldocling-v1.pdf",
+      "sourceSha256": "5dd7968ab48998373efa6de2137a6d5c20e75a3e61d59dd2f183c22e17c4a40e",
+      "sourceBytes": 12009576,
+      "sourcePages": 24,
+      "packagePath": "corpus/packages/doc-004-smoldocling-v1.anx",
+      "packageSha256": "35c5e5c56df171b41279b139a1180e392cb37130b980259b5dcdba06fd9a0422",
+      "packageBytes": 12988635,
+      "packageToSourceSizeRatio": 1.082,
+      "import": {
+        "reused": true,
+        "wallTimeMs": 17834.24,
+        "peakRssBytes": 6602997760,
+        "importerStats": {
+          "sourceFormat": "pdf",
+          "pageCount": 24,
+          "headingBlocks": 29,
+          "paragraphBlocks": 199,
+          "tableBlocks": 6,
+          "imageBlocks": 5,
+          "chartBlocks": 12,
+          "chartBlocksWithData": 0,
+          "pictureItems": 17,
+          "pictureItemsNotYetMapped": 0,
+          "textQualityPagesRequiringOcr": 3,
+          "textQualityCorruptedPages": 0,
+          "selectiveOcrCandidatePages": 0,
+          "sourceBytes": 12009576,
+          "importTelemetry": {
+            "schema": "agn.import-telemetry.v2",
+            "measurementScope": "node-importer-and-child-processes",
+            "childMemoryMetric": "sum-rss-descendant-process-tree",
+            "childPeakRssBytes": 6620119040,
+            "samplingIntervalMs": 250,
+            "stages": [
+              {
+                "stage": "source-staged",
+                "rssBytes": 349650944,
+                "elapsedMs": 0
+              },
+              {
+                "stage": "initial-docling-complete",
+                "rssBytes": 375865344,
+                "elapsedMs": 15835.984
+              }
+            ],
+            "doclingRuns": [
+              {
+                "ocr": false,
+                "forceOcr": false,
+                "classifyPictures": true,
+                "pageBatchSize": 4,
+                "threads": 4,
+                "durationMs": 15821.785,
+                "childPeakRssBytes": 6620119040
+              }
+            ]
+          }
+        },
+        "warnings": null
+      },
+      "validationOk": true,
+      "blocks": 274,
+      "pageBreaks": 23,
+      "canonicalCharacters": 75195
+    },
+    {
+      "id": "doc-005",
+      "format": "docx",
+      "title": "2025 Annual Report of Waiver Activity",
+      "status": "passed",
+      "sourcePath": "corpus/sources/docx/doc-005-cde-waiver-report-2025.docx",
+      "sourceSha256": "6e15a5180e909ec237eb1b92fee31277930772f6f831ade2bff333242fa9a966",
+      "sourceBytes": 162048,
+      "sourcePages": 10,
+      "packagePath": "corpus/packages/doc-005-cde-waiver-report-2025.anx",
+      "packageSha256": "ed279fda41ec17c9b6287ea66c497c24abb0de32562309e222e25215a6934490",
+      "packageBytes": 208404,
+      "packageToSourceSizeRatio": 1.286,
+      "import": {
+        "reused": true,
+        "wallTimeMs": 4293.277,
+        "peakRssBytes": 535265280,
+        "importerStats": {
+          "sourceFormat": "docx",
+          "pageCount": 11,
+          "headingBlocks": 30,
+          "paragraphBlocks": 142,
+          "tableBlocks": 0,
+          "imageBlocks": 0,
+          "chartBlocks": 0,
+          "chartBlocksWithData": 0,
+          "pictureItems": 0,
+          "pictureItemsNotYetMapped": 0,
+          "textQualityPagesRequiringOcr": 0,
+          "textQualityCorruptedPages": 0,
+          "selectiveOcrCandidatePages": 0,
+          "sourceBytes": 162048,
+          "importTelemetry": {
+            "schema": "agn.import-telemetry.v2",
+            "measurementScope": "node-importer-and-child-processes",
+            "childMemoryMetric": "sum-rss-descendant-process-tree",
+            "childPeakRssBytes": 542736384,
+            "samplingIntervalMs": 250,
+            "stages": [
+              {
+                "stage": "source-staged",
+                "rssBytes": 280248320,
+                "elapsedMs": 0
+              },
+              {
+                "stage": "initial-docling-complete",
+                "rssBytes": 303054848,
+                "elapsedMs": 3721.995
+              }
+            ],
+            "doclingRuns": [
+              {
+                "ocr": false,
+                "forceOcr": false,
+                "classifyPictures": true,
+                "pageBatchSize": 4,
+                "threads": 4,
+                "durationMs": 3721.293,
+                "childPeakRssBytes": 542736384
+              }
+            ]
+          }
+        },
+        "warnings": null
+      },
+      "validationOk": true,
+      "blocks": 212,
+      "pageBreaks": 40,
+      "canonicalCharacters": 18851
+    },
+    {
+      "id": "doc-006",
+      "format": "docx",
+      "title": "2024 Annual Report of Waiver Activity",
+      "status": "passed",
+      "sourcePath": "corpus/sources/docx/doc-006-cde-waiver-report-2024.docx",
+      "sourceSha256": "2b2e37c4518cb93e9f3d9915f4184cb25bc68b5d9149cc36a9bc5e65c78a24e5",
+      "sourceBytes": 161787,
+      "sourcePages": 10,
+      "packagePath": "corpus/packages/doc-006-cde-waiver-report-2024.anx",
+      "packageSha256": "1d4ac847720a9da326810f1247ec4abde75651bb152207d7651448ef65322590",
+      "packageBytes": 209440,
+      "packageToSourceSizeRatio": 1.295,
+      "import": {
+        "reused": true,
+        "wallTimeMs": 4322.8,
+        "peakRssBytes": 536002560,
+        "importerStats": {
+          "sourceFormat": "docx",
+          "pageCount": 12,
+          "headingBlocks": 32,
+          "paragraphBlocks": 139,
+          "tableBlocks": 0,
+          "imageBlocks": 0,
+          "chartBlocks": 0,
+          "chartBlocksWithData": 0,
+          "pictureItems": 0,
+          "pictureItemsNotYetMapped": 0,
+          "textQualityPagesRequiringOcr": 0,
+          "textQualityCorruptedPages": 0,
+          "selectiveOcrCandidatePages": 0,
+          "sourceBytes": 161787,
+          "importTelemetry": {
+            "schema": "agn.import-telemetry.v2",
+            "measurementScope": "node-importer-and-child-processes",
+            "childMemoryMetric": "sum-rss-descendant-process-tree",
+            "childPeakRssBytes": 542375936,
+            "samplingIntervalMs": 250,
+            "stages": [
+              {
+                "stage": "source-staged",
+                "rssBytes": 331317248,
+                "elapsedMs": 0
+              },
+              {
+                "stage": "initial-docling-complete",
+                "rssBytes": 348274688,
+                "elapsedMs": 3722.681
+              }
+            ],
+            "doclingRuns": [
+              {
+                "ocr": false,
+                "forceOcr": false,
+                "classifyPictures": true,
+                "pageBatchSize": 4,
+                "threads": 4,
+                "durationMs": 3721.929,
+                "childPeakRssBytes": 542375936
+              }
+            ]
+          }
+        },
+        "warnings": null
+      },
+      "validationOk": true,
+      "blocks": 210,
+      "pageBreaks": 39,
+      "canonicalCharacters": 19119
+    },
+    {
+      "id": "doc-007",
+      "format": "docx",
+      "title": "2023-24 Transitional Kindergarten Teachers of Early Enrollment Children",
+      "status": "passed",
+      "sourcePath": "corpus/sources/docx/doc-007-cde-early-tk-2023-24.docx",
+      "sourceSha256": "41cb615d9e957e2e9276b1edc9f718794db9f134b32ac6875422b0efbf8f3c87",
+      "sourceBytes": 480454,
+      "sourcePages": 33,
+      "packagePath": "corpus/packages/doc-007-cde-early-tk-2023-24.anx",
+      "packageSha256": "2782ebb899d3ea1a7b5be36ece5eae71f118466713cc5fd88927962aa077c46c",
+      "packageBytes": 890894,
+      "packageToSourceSizeRatio": 1.854,
+      "import": {
+        "reused": true,
+        "wallTimeMs": 4961.96,
+        "peakRssBytes": 777060352,
+        "importerStats": {
+          "sourceFormat": "docx",
+          "pageCount": 38,
+          "headingBlocks": 16,
+          "paragraphBlocks": 338,
+          "tableBlocks": 9,
+          "imageBlocks": 0,
+          "chartBlocks": 3,
+          "chartBlocksWithData": 0,
+          "pictureItems": 3,
+          "pictureItemsNotYetMapped": 0,
+          "textQualityPagesRequiringOcr": 0,
+          "textQualityCorruptedPages": 0,
+          "selectiveOcrCandidatePages": 0,
+          "sourceBytes": 480454,
+          "importTelemetry": {
+            "schema": "agn.import-telemetry.v2",
+            "measurementScope": "node-importer-and-child-processes",
+            "childMemoryMetric": "sum-rss-descendant-process-tree",
+            "childPeakRssBytes": 794083328,
+            "samplingIntervalMs": 250,
+            "stages": [
+              {
+                "stage": "source-staged",
+                "rssBytes": 271581184,
+                "elapsedMs": 0
+              },
+              {
+                "stage": "initial-docling-complete",
+                "rssBytes": 272580608,
+                "elapsedMs": 4311.138
+              }
+            ],
+            "doclingRuns": [
+              {
+                "ocr": false,
+                "forceOcr": false,
+                "classifyPictures": true,
+                "pageBatchSize": 4,
+                "threads": 4,
+                "durationMs": 4309.697,
+                "childPeakRssBytes": 794083328
+              }
+            ]
+          }
+        },
+        "warnings": null
+      },
+      "validationOk": true,
+      "blocks": 453,
+      "pageBreaks": 87,
+      "canonicalCharacters": 61691
+    },
+    {
+      "id": "doc-008",
+      "format": "docx",
+      "title": "2024-25 Transitional Kindergarten Teachers of Early Enrollment Children",
+      "status": "passed",
+      "sourcePath": "corpus/sources/docx/doc-008-cde-early-tk-2024-25.docx",
+      "sourceSha256": "6f412740022c92954507cac8cc00ce55c0f31362419d320c15fa01cc7c37b024",
+      "sourceBytes": 496525,
+      "sourcePages": 31,
+      "packagePath": "corpus/packages/doc-008-cde-early-tk-2024-25.anx",
+      "packageSha256": "77bd729466a1f279bddb6c2a0006db79ea8acfb7ebcd4e3fdbf01daf6db046f7",
+      "packageBytes": 942218,
+      "packageToSourceSizeRatio": 1.898,
+      "import": {
+        "reused": true,
+        "wallTimeMs": 5002.066,
+        "peakRssBytes": 763838464,
+        "importerStats": {
+          "sourceFormat": "docx",
+          "pageCount": 36,
+          "headingBlocks": 19,
+          "paragraphBlocks": 336,
+          "tableBlocks": 8,
+          "imageBlocks": 0,
+          "chartBlocks": 3,
+          "chartBlocksWithData": 0,
+          "pictureItems": 3,
+          "pictureItemsNotYetMapped": 0,
+          "textQualityPagesRequiringOcr": 0,
+          "textQualityCorruptedPages": 0,
+          "selectiveOcrCandidatePages": 0,
+          "sourceBytes": 496525,
+          "importTelemetry": {
+            "schema": "agn.import-telemetry.v2",
+            "measurementScope": "node-importer-and-child-processes",
+            "childMemoryMetric": "sum-rss-descendant-process-tree",
+            "childPeakRssBytes": 770162688,
+            "samplingIntervalMs": 250,
+            "stages": [
+              {
+                "stage": "source-staged",
+                "rssBytes": 326402048,
+                "elapsedMs": 0
+              },
+              {
+                "stage": "initial-docling-complete",
+                "rssBytes": 349863936,
+                "elapsedMs": 4361.081
+              }
+            ],
+            "doclingRuns": [
+              {
+                "ocr": false,
+                "forceOcr": false,
+                "classifyPictures": true,
+                "pageBatchSize": 4,
+                "threads": 4,
+                "durationMs": 4359.764,
+                "childPeakRssBytes": 770162688
+              }
+            ]
+          }
+        },
+        "warnings": null
+      },
+      "validationOk": true,
+      "blocks": 442,
+      "pageBreaks": 76,
+      "canonicalCharacters": 60414
+    },
+    {
+      "id": "doc-009",
+      "format": "pdf",
+      "title": "Monetary Policy Report February 2025",
+      "status": "passed",
+      "sourcePath": "corpus/sources/pdf/doc-009-fed-monetary-policy-report-2025-02.pdf",
+      "sourceSha256": "728293cfbfeb672979115ab969cf6ec85cd62977f643eaee397334c6a9534ebd",
+      "sourceBytes": 10004899,
+      "sourcePages": 83,
+      "packagePath": "corpus/packages/doc-009-fed-monetary-policy-report-2025-02.anx",
+      "packageSha256": "369c125d873845bf35c277d5f5fc6684d48be85ff3bc00b9e895acf8477375a6",
+      "packageBytes": 17616097,
+      "packageToSourceSizeRatio": 1.761,
+      "import": {
+        "reused": true,
+        "wallTimeMs": 42294.724,
+        "peakRssBytes": 11722833920,
+        "importerStats": {
+          "sourceFormat": "pdf",
+          "pageCount": 83,
+          "headingBlocks": 136,
+          "paragraphBlocks": 280,
+          "tableBlocks": 7,
+          "imageBlocks": 8,
+          "chartBlocks": 69,
+          "chartBlocksWithData": 0,
+          "pictureItems": 77,
+          "pictureItemsNotYetMapped": 0,
+          "textQualityPagesRequiringOcr": 13,
+          "textQualityCorruptedPages": 0,
+          "selectiveOcrCandidatePages": 0,
+          "sourceBytes": 10004899,
+          "importTelemetry": {
+            "schema": "agn.import-telemetry.v2",
+            "measurementScope": "node-importer-and-child-processes",
+            "childMemoryMetric": "sum-rss-descendant-process-tree",
+            "childPeakRssBytes": 11739578368,
+            "samplingIntervalMs": 250,
+            "stages": [
+              {
+                "stage": "source-staged",
+                "rssBytes": 346767360,
+                "elapsedMs": 0
+              },
+              {
+                "stage": "initial-docling-complete",
+                "rssBytes": 464846848,
+                "elapsedMs": 40591.419
+              }
+            ],
+            "doclingRuns": [
+              {
+                "ocr": false,
+                "forceOcr": false,
+                "classifyPictures": true,
+                "pageBatchSize": 4,
+                "threads": 4,
+                "durationMs": 40548.455,
+                "childPeakRssBytes": 11739578368
+              }
+            ]
+          }
+        },
+        "warnings": null
+      },
+      "validationOk": true,
+      "blocks": 604,
+      "pageBreaks": 79,
+      "canonicalCharacters": 127788
+    },
+    {
+      "id": "doc-010",
+      "format": "pdf",
+      "title": "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile",
+      "status": "passed",
+      "sourcePath": "corpus/sources/pdf/doc-010-nist-ai-600-1-generative-ai-profile.pdf",
+      "sourceSha256": "6e73620ab6b64e90ef2c04bf0e0d6246185a2f4b1b13cab0df494496cff89b6a",
+      "sourceBytes": 1174643,
+      "sourcePages": 64,
+      "packagePath": "corpus/packages/doc-010-nist-ai-600-1-generative-ai-profile.anx",
+      "packageSha256": "a2d8678ec17d75e71a0bf03902ac9f769e44eb42ff10875648faa85493aa48a3",
+      "packageBytes": 1752281,
+      "packageToSourceSizeRatio": 1.492,
+      "import": {
+        "reused": true,
+        "wallTimeMs": 40744.936,
+        "peakRssBytes": 8959868928,
+        "importerStats": {
+          "sourceFormat": "pdf",
+          "pageCount": 64,
+          "headingBlocks": 49,
+          "paragraphBlocks": 372,
+          "tableBlocks": 68,
+          "imageBlocks": 3,
+          "chartBlocks": 0,
+          "chartBlocksWithData": 0,
+          "pictureItems": 3,
+          "pictureItemsNotYetMapped": 0,
+          "textQualityPagesRequiringOcr": 0,
+          "textQualityCorruptedPages": 0,
+          "selectiveOcrCandidatePages": 0,
+          "sourceBytes": 1174643,
+          "importTelemetry": {
+            "schema": "agn.import-telemetry.v2",
+            "measurementScope": "node-importer-and-child-processes",
+            "childMemoryMetric": "sum-rss-descendant-process-tree",
+            "childPeakRssBytes": 8961654784,
+            "samplingIntervalMs": 250,
+            "stages": [
+              {
+                "stage": "source-staged",
+                "rssBytes": 329629696,
+                "elapsedMs": 0
+              },
+              {
+                "stage": "initial-docling-complete",
+                "rssBytes": 410337280,
+                "elapsedMs": 39416.672
+              }
+            ],
+            "doclingRuns": [
+              {
+                "ocr": false,
+                "forceOcr": false,
+                "classifyPictures": true,
+                "pageBatchSize": 4,
+                "threads": 4,
+                "durationMs": 39388.732,
+                "childPeakRssBytes": 8961654784
+              }
+            ]
+          }
+        },
+        "warnings": null
+      },
+      "validationOk": true,
+      "blocks": 570,
+      "pageBreaks": 63,
+      "canonicalCharacters": 155033
+    },
+    {
+      "id": "doc-011",
+      "format": "pdf",
+      "title": "Secure Software Development Framework (SSDF) Version 1.1",
+      "status": "passed",
+      "sourcePath": "corpus/sources/pdf/doc-011-nist-sp-800-218-ssdf-1-1.pdf",
+      "sourceSha256": "617746e553a9e2da49bfbd4eef0dfc3094758a39b869314e4173ac36605cde22",
+      "sourceBytes": 739891,
+      "sourcePages": 36,
+      "packagePath": "corpus/packages/doc-011-nist-sp-800-218-ssdf-1-1.anx",
+      "packageSha256": "69f2b1f19352beee4e4e0f3088d305b43239235b1cd3df04b0424744c0f86479",
+      "packageBytes": 1086900,
+      "packageToSourceSizeRatio": 1.469,
+      "import": {
+        "reused": true,
+        "wallTimeMs": 37316.045,
+        "peakRssBytes": 7854817280,
+        "importerStats": {
+          "sourceFormat": "pdf",
+          "pageCount": 36,
+          "headingBlocks": 23,
+          "paragraphBlocks": 190,
+          "tableBlocks": 22,
+          "imageBlocks": 2,
+          "chartBlocks": 0,
+          "chartBlocksWithData": 0,
+          "pictureItems": 2,
+          "pictureItemsNotYetMapped": 0,
+          "textQualityPagesRequiringOcr": 0,
+          "textQualityCorruptedPages": 0,
+          "selectiveOcrCandidatePages": 0,
+          "sourceBytes": 739891,
+          "importTelemetry": {
+            "schema": "agn.import-telemetry.v2",
+            "measurementScope": "node-importer-and-child-processes",
+            "childMemoryMetric": "sum-rss-descendant-process-tree",
+            "childPeakRssBytes": 7863828480,
+            "samplingIntervalMs": 250,
+            "stages": [
+              {
+                "stage": "source-staged",
+                "rssBytes": 328646656,
+                "elapsedMs": 0
+              },
+              {
+                "stage": "initial-docling-complete",
+                "rssBytes": 390955008,
+                "elapsedMs": 36142.519
+              }
+            ],
+            "doclingRuns": [
+              {
+                "ocr": false,
+                "forceOcr": false,
+                "classifyPictures": true,
+                "pageBatchSize": 4,
+                "threads": 4,
+                "durationMs": 36122.653,
+                "childPeakRssBytes": 7863828480
+              }
+            ]
+          }
+        },
+        "warnings": null
+      },
+      "validationOk": true,
+      "blocks": 281,
+      "pageBreaks": 35,
+      "canonicalCharacters": 101417
+    },
+    {
+      "id": "doc-012",
+      "format": "pdf",
+      "title": "Technology Readiness Assessment Best Practices Guide",
+      "status": "passed",
+      "sourcePath": "corpus/sources/pdf/doc-012-nasa-tra-best-practices-guide.pdf",
+      "sourceSha256": "9d7b4a57dd07a0d3ffbe4ff76a1d6cae3ed430b351ab14c1e260dd9fb2ad09fd",
+      "sourceBytes": 1654227,
+      "sourcePages": 41,
+      "packagePath": "corpus/packages/doc-012-nasa-tra-best-practices-guide.anx",
+      "packageSha256": "cd5fde804a4f3e3aae1fcdcfa74231e54f86099db245eac026c216e613b2da35",
+      "packageBytes": 2784336,
+      "packageToSourceSizeRatio": 1.683,
+      "import": {
+        "reused": true,
+        "wallTimeMs": 22991.484,
+        "peakRssBytes": 6950076416,
+        "importerStats": {
+          "sourceFormat": "pdf",
+          "pageCount": 41,
+          "headingBlocks": 61,
+          "paragraphBlocks": 368,
+          "tableBlocks": 15,
+          "imageBlocks": 3,
+          "chartBlocks": 6,
+          "chartBlocksWithData": 0,
+          "pictureItems": 9,
+          "pictureItemsNotYetMapped": 0,
+          "textQualityPagesRequiringOcr": 0,
+          "textQualityCorruptedPages": 0,
+          "selectiveOcrCandidatePages": 0,
+          "sourceBytes": 1654227,
+          "importTelemetry": {
+            "schema": "agn.import-telemetry.v2",
+            "measurementScope": "node-importer-and-child-processes",
+            "childMemoryMetric": "sum-rss-descendant-process-tree",
+            "childPeakRssBytes": 6955466752,
+            "samplingIntervalMs": 250,
+            "stages": [
+              {
+                "stage": "source-staged",
+                "rssBytes": 329285632,
+                "elapsedMs": 0
+              },
+              {
+                "stage": "initial-docling-complete",
+                "rssBytes": 373522432,
+                "elapsedMs": 21791.98
+              }
+            ],
+            "doclingRuns": [
+              {
+                "ocr": false,
+                "forceOcr": false,
+                "classifyPictures": true,
+                "pageBatchSize": 4,
+                "threads": 4,
+                "durationMs": 21773.268,
+                "childPeakRssBytes": 6955466752
+              }
+            ]
+          }
+        },
+        "warnings": null
+      },
+      "validationOk": true,
+      "blocks": 494,
+      "pageBreaks": 40,
+      "canonicalCharacters": 74673
+    }
+  ]
+}

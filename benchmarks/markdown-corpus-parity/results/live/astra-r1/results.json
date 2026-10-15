@@ -1,0 +1,896 @@
+{
+  "schema": "anx.corpus-live-results.v1",
+  "generatedAt": "2026-10-15T16:10:26.247Z",
+  "benchmarkId": "markdown-corpus-parity-v1",
+  "stage": "live-answer-smoke",
+  "runLabel": "astra-r1",
+  "status": "PASS",
+  "provider": "codex",
+  "requestedModel": "gpt-6-astra",
+  "repetitions": 1,
+  "aggregates": [
+    {
+      "arm": "anx",
+      "trials": 6,
+      "completed": 6,
+      "taskSuccessRate": 1,
+      "answerAccuracy": 1,
+      "answerConceptRecall": 1,
+      "citationResolutionRate": 1,
+      "documentCitationCoverage": 1,
+      "evidenceCitationCoverage": 0.791667,
+      "relationshipCitationCoverage": 1,
+      "citationPrecision": 0.646825,
+      "medianUncachedInputTokens": 19789,
+      "medianTotalTokens": 53497,
+      "medianToolCalls": 2,
+      "medianWallTimeMs": 17579.934
+    },
+    {
+      "arm": "markdown",
+      "trials": 6,
+      "completed": 6,
+      "taskSuccessRate": 1,
+      "answerAccuracy": 1,
+      "answerConceptRecall": 1,
+      "citationResolutionRate": 1,
+      "documentCitationCoverage": 1,
+      "evidenceCitationCoverage": 0.791667,
+      "relationshipCitationCoverage": 1,
+      "citationPrecision": 0.711111,
+      "medianUncachedInputTokens": 19913,
+      "medianTotalTokens": 52893,
+      "medianToolCalls": 3,
+      "medianWallTimeMs": 19742.86
+    }
+  ],
+  "trials": [
+    {
+      "id": "cross-waiver-year-over-year__anx",
+      "taskId": "cross-waiver-year-over-year",
+      "arm": "anx",
+      "status": "completed",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "actualModels": [],
+      "process": {
+        "code": 0,
+        "wallTimeMs": 19365.927,
+        "stderr": "Reading additional input from stdin...\n"
+      },
+      "usage": {
+        "input_tokens": 22028,
+        "reported_input_tokens": 53516,
+        "cache_read_tokens": 31488,
+        "output_tokens": 430,
+        "total_tokens": 53946,
+        "tool_calls": 3,
+        "api_calls": 4
+      },
+      "toolCommands": [
+        "/bin/zsh -lc \"node corpus-tool.mjs anx search 'Compare the total waiver requests and their dispositions in the California 2024 and 2025 annual waiver reports.' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs anx search-document 'doc-005' 'total approved denied withdrawn dispositions' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs anx search-document 'doc-006' 'total approved denied withdrawn dispositions' 12\""
+      ],
+      "protocol": {
+        "noHarness": true,
+        "noMemory": true,
+        "freshSession": true,
+        "apiCallLimit": 8,
+        "apiCallLimitObserved": 4,
+        "apiCallLimitMet": true,
+        "commandAudit": {
+          "passed": true,
+          "commands": 3,
+          "violations": []
+        }
+      },
+      "parsed": {
+        "answer": "California’s 2024 report recorded 129 total waiver requests: 103 approved, 0 denied, 15 withdrawn, and 11 with no formal action. The 2025 report recorded 172 total requests: 134 approved, 1 denied, 30 withdrawn, and 7 with no formal action. Thus, total requests increased by 43 (33.33%); approvals increased by 31, denials by 1, and withdrawals by 15, while requests with no formal action decreased by 4.",
+        "citations": [
+          "anx://docx-2b2e37c4518cb93e9f3d9915/revisions/0/blocks/paragraph-860e0f708b175c46",
+          "anx://docx-6e15a5180e909ec237eb1b92/revisions/0/blocks/paragraph-74124c1041021649",
+          "anx://docx-6e15a5180e909ec237eb1b92/revisions/0/blocks/paragraph-a15be07b6464e150"
+        ],
+        "confidence": 1
+      },
+      "score": {
+        "parseOk": true,
+        "answerCorrect": true,
+        "answerConceptRecall": 1,
+        "citationResolutionRate": 1,
+        "documentCitationCoverage": 1,
+        "evidenceCitationCoverage": 1,
+        "relationshipCitationCoverage": 1,
+        "citationPrecision": 0.6666666666666666,
+        "citedDocuments": [
+          "doc-006",
+          "doc-005"
+        ],
+        "taskSuccess": true
+      },
+      "artifacts": {
+        "promptPath": "results/live/astra-r1/trials/cross-waiver-year-over-year__anx.prompt.md",
+        "responsePath": "results/live/astra-r1/trials/cross-waiver-year-over-year__anx.response.json",
+        "eventsPath": "results/live/astra-r1/trials/cross-waiver-year-over-year__anx.events.jsonl"
+      }
+    },
+    {
+      "id": "cross-waiver-year-over-year__markdown",
+      "taskId": "cross-waiver-year-over-year",
+      "arm": "markdown",
+      "status": "completed",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "actualModels": [],
+      "process": {
+        "code": 0,
+        "wallTimeMs": 19742.86,
+        "stderr": "Reading additional input from stdin...\n"
+      },
+      "usage": {
+        "input_tokens": 21270,
+        "reported_input_tokens": 52502,
+        "cache_read_tokens": 31232,
+        "output_tokens": 391,
+        "total_tokens": 52893,
+        "tool_calls": 3,
+        "api_calls": 4
+      },
+      "toolCommands": [
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search 'Compare the total waiver requests and their dispositions in the California 2024 and 2025 annual waiver reports.' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search-document 'doc-006' 'total approved denied withdrawn dispositions' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search-document 'doc-005' 'total approved denied withdrawn dispositions' 12\""
+      ],
+      "protocol": {
+        "noHarness": true,
+        "noMemory": true,
+        "freshSession": true,
+        "apiCallLimit": 8,
+        "apiCallLimitObserved": 4,
+        "apiCallLimitMet": true,
+        "commandAudit": {
+          "passed": true,
+          "commands": 3,
+          "violations": []
+        }
+      },
+      "parsed": {
+        "answer": "California’s 2024 report recorded 129 waiver requests: 103 approved, 0 denied, 15 withdrawn, and 11 with no formal action. The 2025 report recorded 172 requests: 134 approved, 1 denied, 30 withdrawn, and 7 with no formal action. From 2024 to 2025, total requests increased by 43 (33.33%); approvals increased by 31, denials by 1, withdrawals by 15, and requests with no formal action decreased by 4.",
+        "citations": [
+          "markdown://doc-006/doc-006-cde-waiver-report-2024.md#L124-L124",
+          "markdown://doc-005/doc-005-cde-waiver-report-2025.md#L119-L119",
+          "markdown://doc-005/doc-005-cde-waiver-report-2025.md#L181-L181"
+        ],
+        "confidence": 1
+      },
+      "score": {
+        "parseOk": true,
+        "answerCorrect": true,
+        "answerConceptRecall": 1,
+        "citationResolutionRate": 1,
+        "documentCitationCoverage": 1,
+        "evidenceCitationCoverage": 1,
+        "relationshipCitationCoverage": 1,
+        "citationPrecision": 0.6666666666666666,
+        "citedDocuments": [
+          "doc-006",
+          "doc-005"
+        ],
+        "taskSuccess": true
+      },
+      "artifacts": {
+        "promptPath": "results/live/astra-r1/trials/cross-waiver-year-over-year__markdown.prompt.md",
+        "responsePath": "results/live/astra-r1/trials/cross-waiver-year-over-year__markdown.response.json",
+        "eventsPath": "results/live/astra-r1/trials/cross-waiver-year-over-year__markdown.events.jsonl"
+      }
+    },
+    {
+      "id": "cross-tk-survey-year-over-year__anx",
+      "taskId": "cross-tk-survey-year-over-year",
+      "arm": "anx",
+      "status": "completed",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "actualModels": [],
+      "process": {
+        "code": 0,
+        "wallTimeMs": 16985.265,
+        "stderr": "Reading additional input from stdin...\n"
+      },
+      "usage": {
+        "input_tokens": 19035,
+        "reported_input_tokens": 33499,
+        "cache_read_tokens": 14464,
+        "output_tokens": 358,
+        "total_tokens": 33857,
+        "tool_calls": 1,
+        "api_calls": 2
+      },
+      "toolCommands": [
+        "/bin/zsh -lc \"node corpus-tool.mjs anx search 'Compare the number of LEAs surveyed, responses recorded, and stated response rates in the 2023-24 and 2024-25 Transitional Kindergarten reports.' 12\""
+      ],
+      "protocol": {
+        "noHarness": true,
+        "noMemory": true,
+        "freshSession": true,
+        "apiCallLimit": 8,
+        "apiCallLimitObserved": 2,
+        "apiCallLimitMet": true,
+        "commandAudit": {
+          "passed": true,
+          "commands": 1,
+          "violations": []
+        }
+      },
+      "parsed": {
+        "answer": "2023–24: 2,208 LEAs were surveyed; 1,579 responses were recorded, with a stated response rate of about 72%. After excluding 385 LEAs that did not offer TK, the report gives 1,823 remaining LEAs and the same 1,579 responses, stating an adjusted rate of 87%. It records 244 nonresponses or missed deadlines.\n\n2024–25: 1,464 LEAs were surveyed; 952 responses were recorded, with a stated response rate of about 65%. Of respondents, 26 indicated they did not offer TK; 926 indicated at least one TK program, reported as 95%. That 95% describes program availability, not an adjusted survey response rate. The report records 512 nonresponses or missed deadlines.",
+        "citations": [
+          "anx://docx-41cb615d9e957e2e9276b1ed/revisions/0/blocks/paragraph-1379065c3d4c000e",
+          "anx://docx-6f412740022c92954507cac8/revisions/0/blocks/paragraph-282af7a00c79af70"
+        ],
+        "confidence": 0.99
+      },
+      "score": {
+        "parseOk": true,
+        "answerCorrect": true,
+        "answerConceptRecall": 1,
+        "citationResolutionRate": 1,
+        "documentCitationCoverage": 1,
+        "evidenceCitationCoverage": 0.75,
+        "relationshipCitationCoverage": 1,
+        "citationPrecision": 1,
+        "citedDocuments": [
+          "doc-007",
+          "doc-008"
+        ],
+        "taskSuccess": true
+      },
+      "artifacts": {
+        "promptPath": "results/live/astra-r1/trials/cross-tk-survey-year-over-year__anx.prompt.md",
+        "responsePath": "results/live/astra-r1/trials/cross-tk-survey-year-over-year__anx.response.json",
+        "eventsPath": "results/live/astra-r1/trials/cross-tk-survey-year-over-year__anx.events.jsonl"
+      }
+    },
+    {
+      "id": "cross-tk-survey-year-over-year__markdown",
+      "taskId": "cross-tk-survey-year-over-year",
+      "arm": "markdown",
+      "status": "completed",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "actualModels": [],
+      "process": {
+        "code": 0,
+        "wallTimeMs": 16365.206,
+        "stderr": "Reading additional input from stdin...\n"
+      },
+      "usage": {
+        "input_tokens": 18788,
+        "reported_input_tokens": 33252,
+        "cache_read_tokens": 14464,
+        "output_tokens": 341,
+        "total_tokens": 33593,
+        "tool_calls": 1,
+        "api_calls": 2
+      },
+      "toolCommands": [
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search 'Compare the number of LEAs surveyed, responses recorded, and stated response rates in the 2023-24 and 2024-25 Transitional Kindergarten reports.' 12\""
+      ],
+      "protocol": {
+        "noHarness": true,
+        "noMemory": true,
+        "freshSession": true,
+        "apiCallLimit": 8,
+        "apiCallLimitObserved": 2,
+        "apiCallLimitMet": true,
+        "commandAudit": {
+          "passed": true,
+          "commands": 1,
+          "violations": []
+        }
+      },
+      "parsed": {
+        "answer": "2023–24: 2,208 LEAs were surveyed; 1,579 responses were recorded (about 72%). The report also states an 87% response rate among the remaining 1,823 LEAs after excluding 385 that did not offer TK. It records 244 nonresponses or missed deadlines.\n\n2024–25: 1,464 LEAs were surveyed; 952 responses were recorded (about 65%). Of these, 26 indicated they did not offer TK; 926 were reported as having at least one TK program (stated as 95%, which describes program availability rather than the overall survey response rate). It records 512 nonresponses or missed deadlines.\n\nThus, both the number surveyed and responses recorded decreased, and the stated overall response rate fell from about 72% to about 65%.",
+        "citations": [
+          "markdown://doc-007/doc-007-cde-early-tk-2023-24.md#L397-L397",
+          "markdown://doc-008/doc-008-cde-early-tk-2024-25.md#L393-L393"
+        ],
+        "confidence": 0.99
+      },
+      "score": {
+        "parseOk": true,
+        "answerCorrect": true,
+        "answerConceptRecall": 1,
+        "citationResolutionRate": 1,
+        "documentCitationCoverage": 1,
+        "evidenceCitationCoverage": 0.75,
+        "relationshipCitationCoverage": 1,
+        "citationPrecision": 1,
+        "citedDocuments": [
+          "doc-007",
+          "doc-008"
+        ],
+        "taskSuccess": true
+      },
+      "artifacts": {
+        "promptPath": "results/live/astra-r1/trials/cross-tk-survey-year-over-year__markdown.prompt.md",
+        "responsePath": "results/live/astra-r1/trials/cross-tk-survey-year-over-year__markdown.response.json",
+        "eventsPath": "results/live/astra-r1/trials/cross-tk-survey-year-over-year__markdown.events.jsonl"
+      }
+    },
+    {
+      "id": "cross-ai-rmf-and-generative-ai-profile__anx",
+      "taskId": "cross-ai-rmf-and-generative-ai-profile",
+      "arm": "anx",
+      "status": "completed",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "actualModels": [],
+      "process": {
+        "code": 0,
+        "wallTimeMs": 35782.624,
+        "stderr": "Reading additional input from stdin...\n"
+      },
+      "usage": {
+        "input_tokens": 25713,
+        "reported_input_tokens": 80497,
+        "cache_read_tokens": 54784,
+        "output_tokens": 1007,
+        "total_tokens": 81504,
+        "tool_calls": 3,
+        "api_calls": 4
+      },
+      "toolCommands": [
+        "/bin/zsh -lc \"node corpus-tool.mjs anx search 'Using NIST AI RMF 1.0 and its Generative AI Profile, state the four AI RMF Core functions and list the twelve risks the profile identifies as unique to or exacerbated by generative AI.' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs anx search-document 'doc-010' 'twelve risks CBRN confabulation privacy environmental intellectual' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs anx search-document 'doc-010' '2.1. 2.2. 2.3. 2.4. 2.5. 2.6. 2.7. 2.8. 2.9. 2.10. 2.11. 2.12.' 12\""
+      ],
+      "protocol": {
+        "noHarness": true,
+        "noMemory": true,
+        "freshSession": true,
+        "apiCallLimit": 8,
+        "apiCallLimitObserved": 4,
+        "apiCallLimitMet": true,
+        "commandAudit": {
+          "passed": true,
+          "commands": 3,
+          "violations": []
+        }
+      },
+      "parsed": {
+        "answer": "The four AI RMF Core functions are GOVERN, MAP, MEASURE, and MANAGE.\n\nThe Generative AI Profile identifies twelve risks unique to or exacerbated by generative AI: (1) CBRN Information or Capabilities; (2) Confabulation; (3) Dangerous, Violent, or Hateful Content; (4) Data Privacy; (5) Environmental Impacts; (6) Harmful Bias and Homogenization; (7) Human-AI Configuration; (8) Information Integrity; (9) Information Security; (10) Intellectual Property; (11) Obscene, Degrading, and/or Abusive Content; (12) Value Chain and Component Integration.",
+        "citations": [
+          "anx://pdf-7576edb531d9848825814ee8/revisions/0/blocks/paragraph-095a6d48a28bb2c2",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/paragraph-28a18417e0a32017",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/heading-465dc9ea5b619dba",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/heading-0a6493c53bc64c89",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/heading-7c6eb191b6b353d2",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/heading-0b688da276ea710e",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/heading-ddf38880fe9e0e50",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/heading-76af01b649a27d67",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/heading-8bad8357d11ad863",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/heading-e27bb53257f5cc57",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/heading-5b5232fca9dc4e34",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/heading-9a7e689a6cdc3beb",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/heading-b8361830d590eb10",
+          "anx://pdf-6e73620ab6b64e90ef2c04bf/revisions/0/blocks/heading-39ab68c4ccea3ce0"
+        ],
+        "confidence": 1
+      },
+      "score": {
+        "parseOk": true,
+        "answerCorrect": true,
+        "answerConceptRecall": 1,
+        "citationResolutionRate": 1,
+        "documentCitationCoverage": 1,
+        "evidenceCitationCoverage": 1,
+        "relationshipCitationCoverage": 1,
+        "citationPrecision": 0.21428571428571427,
+        "citedDocuments": [
+          "doc-002",
+          "doc-010"
+        ],
+        "taskSuccess": true
+      },
+      "artifacts": {
+        "promptPath": "results/live/astra-r1/trials/cross-ai-rmf-and-generative-ai-profile__anx.prompt.md",
+        "responsePath": "results/live/astra-r1/trials/cross-ai-rmf-and-generative-ai-profile__anx.response.json",
+        "eventsPath": "results/live/astra-r1/trials/cross-ai-rmf-and-generative-ai-profile__anx.events.jsonl"
+      }
+    },
+    {
+      "id": "cross-ai-rmf-and-generative-ai-profile__markdown",
+      "taskId": "cross-ai-rmf-and-generative-ai-profile",
+      "arm": "markdown",
+      "status": "completed",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "actualModels": [],
+      "process": {
+        "code": 0,
+        "wallTimeMs": 27261.301,
+        "stderr": "Reading additional input from stdin...\n"
+      },
+      "usage": {
+        "input_tokens": 44034,
+        "reported_input_tokens": 106882,
+        "cache_read_tokens": 62848,
+        "output_tokens": 629,
+        "total_tokens": 107511,
+        "tool_calls": 4,
+        "api_calls": 5
+      },
+      "toolCommands": [
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search 'Using NIST AI RMF 1.0 and its Generative AI Profile, state the four AI RMF Core functions and list the twelve risks the profile identifies as unique to or exacerbated by generative AI.' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search-document 'doc-010' '2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 2.10 2.11 2.12 risks' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search-document 'doc-010' 'Overview of Risks Unique to or Exacerbated by GAI' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search-document 'doc-010' 'Chemical Biological Radiological Nuclear Dangerous Violent Hateful Harmful Bias Homogenization Information Integrity Intellectual Property Obscene Degrading Abusive Value Chain Component Integration' 12\""
+      ],
+      "protocol": {
+        "noHarness": true,
+        "noMemory": true,
+        "freshSession": true,
+        "apiCallLimit": 8,
+        "apiCallLimitObserved": 5,
+        "apiCallLimitMet": true,
+        "commandAudit": {
+          "passed": true,
+          "commands": 4,
+          "violations": []
+        }
+      },
+      "parsed": {
+        "answer": "The four AI RMF Core functions are GOVERN, MAP, MEASURE, and MANAGE.\n\nThe Generative AI Profile identifies twelve risks unique to or exacerbated by generative AI: (1) CBRN Information or Capabilities (chemical, biological, radiological, or nuclear); (2) Confabulation; (3) Dangerous, Violent, or Hateful Content; (4) Data Privacy; (5) Environmental Impacts; (6) Harmful Bias and Homogenization; (7) Human-AI Configuration; (8) Information Integrity; (9) Information Security; (10) Intellectual Property; (11) Obscene, Degrading, and/or Abusive Content; and (12) Value Chain and Component Integration.",
+        "citations": [
+          "markdown://doc-002/doc-002-nist-ai-rmf-1-0.md#L422-L422",
+          "markdown://doc-010/doc-010-nist-ai-600-1-generative-ai-profile.md#L133-L133",
+          "markdown://doc-010/doc-010-nist-ai-600-1-generative-ai-profile.md#L139-L139",
+          "markdown://doc-010/doc-010-nist-ai-600-1-generative-ai-profile.md#L147-L147",
+          "markdown://doc-010/doc-010-nist-ai-600-1-generative-ai-profile.md#L756-L764"
+        ],
+        "confidence": 0.99
+      },
+      "score": {
+        "parseOk": true,
+        "answerCorrect": true,
+        "answerConceptRecall": 1,
+        "citationResolutionRate": 1,
+        "documentCitationCoverage": 1,
+        "evidenceCitationCoverage": 1,
+        "relationshipCitationCoverage": 1,
+        "citationPrecision": 0.6,
+        "citedDocuments": [
+          "doc-002",
+          "doc-010"
+        ],
+        "taskSuccess": true
+      },
+      "artifacts": {
+        "promptPath": "results/live/astra-r1/trials/cross-ai-rmf-and-generative-ai-profile__markdown.prompt.md",
+        "responsePath": "results/live/astra-r1/trials/cross-ai-rmf-and-generative-ai-profile__markdown.response.json",
+        "eventsPath": "results/live/astra-r1/trials/cross-ai-rmf-and-generative-ai-profile__markdown.events.jsonl"
+      }
+    },
+    {
+      "id": "cross-ai-framework-and-readiness__anx",
+      "taskId": "cross-ai-framework-and-readiness",
+      "arm": "anx",
+      "status": "completed",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "actualModels": [],
+      "process": {
+        "code": 0,
+        "wallTimeMs": 16003.181,
+        "stderr": "Reading additional input from stdin...\n"
+      },
+      "usage": {
+        "input_tokens": 21291,
+        "reported_input_tokens": 53163,
+        "cache_read_tokens": 31872,
+        "output_tokens": 334,
+        "total_tokens": 53497,
+        "tool_calls": 2,
+        "api_calls": 3
+      },
+      "toolCommands": [
+        "/bin/zsh -lc \"node corpus-tool.mjs anx search 'Using the NIST AI RMF and the NASA Technology Readiness Assessment guide, state the four AI RMF Core functions and give the guide definitions of TRL 1 and TRL 9.' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs anx search-document 'doc-012' 'TRL 1 TRL 9 definitions basic principles actual system flight proven' 12\""
+      ],
+      "protocol": {
+        "noHarness": true,
+        "noMemory": true,
+        "freshSession": true,
+        "apiCallLimit": 8,
+        "apiCallLimitObserved": 3,
+        "apiCallLimitMet": true,
+        "commandAudit": {
+          "passed": true,
+          "commands": 2,
+          "violations": []
+        }
+      },
+      "parsed": {
+        "answer": "The four NIST AI RMF Core functions are GOVERN, MAP, MEASURE, and MANAGE. NASA’s Technology Readiness Assessment Best Practices Guide defines TRL 1 as “Basic principles observed and reported” and TRL 9 as “Actual system flight proven through successful mission operations.”",
+        "citations": [
+          "anx://pdf-7576edb531d9848825814ee8/revisions/0/blocks/paragraph-095a6d48a28bb2c2",
+          "anx://pdf-9d7b4a57dd07a0d3ffbe4ff7/revisions/0/blocks/table-7d98ca235b05c433",
+          "anx://pdf-9d7b4a57dd07a0d3ffbe4ff7/revisions/0/blocks/table-55d5e39ad2928819"
+        ],
+        "confidence": 1
+      },
+      "score": {
+        "parseOk": true,
+        "answerCorrect": true,
+        "answerConceptRecall": 1,
+        "citationResolutionRate": 1,
+        "documentCitationCoverage": 1,
+        "evidenceCitationCoverage": 1,
+        "relationshipCitationCoverage": 1,
+        "citationPrecision": 1,
+        "citedDocuments": [
+          "doc-002",
+          "doc-012"
+        ],
+        "taskSuccess": true
+      },
+      "artifacts": {
+        "promptPath": "results/live/astra-r1/trials/cross-ai-framework-and-readiness__anx.prompt.md",
+        "responsePath": "results/live/astra-r1/trials/cross-ai-framework-and-readiness__anx.response.json",
+        "eventsPath": "results/live/astra-r1/trials/cross-ai-framework-and-readiness__anx.events.jsonl"
+      }
+    },
+    {
+      "id": "cross-ai-framework-and-readiness__markdown",
+      "taskId": "cross-ai-framework-and-readiness",
+      "arm": "markdown",
+      "status": "completed",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "actualModels": [],
+      "process": {
+        "code": 0,
+        "wallTimeMs": 20442.736,
+        "stderr": "Reading additional input from stdin...\n"
+      },
+      "usage": {
+        "input_tokens": 23534,
+        "reported_input_tokens": 74734,
+        "cache_read_tokens": 51200,
+        "output_tokens": 373,
+        "total_tokens": 75107,
+        "tool_calls": 4,
+        "api_calls": 5
+      },
+      "toolCommands": [
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search 'Using the NIST AI RMF and the NASA Technology Readiness Assessment guide, state the four AI RMF Core functions and give the guide definitions of TRL 1 and TRL 9.' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search-document 'doc-012' 'TRL 1 TRL 9 definitions' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown get 'markdown://doc-012/doc-012-nasa-tra-best-practices-guide.md#L146-L149'\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search-document 'doc-012' 'actual system flight proven basic principles observed' 12\""
+      ],
+      "protocol": {
+        "noHarness": true,
+        "noMemory": true,
+        "freshSession": true,
+        "apiCallLimit": 8,
+        "apiCallLimitObserved": 5,
+        "apiCallLimitMet": true,
+        "commandAudit": {
+          "passed": true,
+          "commands": 4,
+          "violations": []
+        }
+      },
+      "parsed": {
+        "answer": "The NIST AI RMF Core functions are GOVERN, MAP, MEASURE, and MANAGE. NASA’s Technology Readiness Assessment Best Practices Guide defines TRL 1 as “Basic Principles observed and reported” and TRL 9 as “Actual system flight proven through successful mission operations.”",
+        "citations": [
+          "markdown://doc-002/doc-002-nist-ai-rmf-1-0.md#L422-L422",
+          "markdown://doc-012/doc-012-nasa-tra-best-practices-guide.md#L229-L236",
+          "markdown://doc-012/doc-012-nasa-tra-best-practices-guide.md#L242-L247"
+        ],
+        "confidence": 1
+      },
+      "score": {
+        "parseOk": true,
+        "answerCorrect": true,
+        "answerConceptRecall": 1,
+        "citationResolutionRate": 1,
+        "documentCitationCoverage": 1,
+        "evidenceCitationCoverage": 1,
+        "relationshipCitationCoverage": 1,
+        "citationPrecision": 1,
+        "citedDocuments": [
+          "doc-002",
+          "doc-012"
+        ],
+        "taskSuccess": true
+      },
+      "artifacts": {
+        "promptPath": "results/live/astra-r1/trials/cross-ai-framework-and-readiness__markdown.prompt.md",
+        "responsePath": "results/live/astra-r1/trials/cross-ai-framework-and-readiness__markdown.response.json",
+        "eventsPath": "results/live/astra-r1/trials/cross-ai-framework-and-readiness__markdown.events.jsonl"
+      }
+    },
+    {
+      "id": "relationship-current-waiver-series__anx",
+      "taskId": "relationship-current-waiver-series",
+      "arm": "anx",
+      "status": "completed",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "actualModels": [],
+      "process": {
+        "code": 0,
+        "wallTimeMs": 18702.731,
+        "stderr": "Reading additional input from stdin...\n"
+      },
+      "usage": {
+        "input_tokens": 17758,
+        "reported_input_tokens": 49246,
+        "cache_read_tokens": 31488,
+        "output_tokens": 320,
+        "total_tokens": 49566,
+        "tool_calls": 2,
+        "api_calls": 3
+      },
+      "toolCommands": [
+        "/bin/zsh -lc \"node corpus-tool.mjs anx search 'Which California annual waiver report supersedes the other report in this corpus, and what total waiver count does each version report?' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs anx relationships 'doc-005' both\""
+      ],
+      "protocol": {
+        "noHarness": true,
+        "noMemory": true,
+        "freshSession": true,
+        "apiCallLimit": 8,
+        "apiCallLimitObserved": 3,
+        "apiCallLimitMet": true,
+        "commandAudit": {
+          "passed": true,
+          "commands": 2,
+          "violations": []
+        }
+      },
+      "parsed": {
+        "answer": "The California Department of Education’s 2025 Annual Report of Waiver Activity supersedes the 2024 Annual Report of Waiver Activity. The 2025 report records 172 total waivers; the 2024 report records 129 total waivers.",
+        "citations": [
+          "anx://docx-6e15a5180e909ec237eb1b92/revisions/0/relationships/relationship-waiver-2025-supersedes-2024",
+          "anx://docx-6e15a5180e909ec237eb1b92/revisions/0/blocks/heading-840aadf09b5dbeea",
+          "anx://docx-2b2e37c4518cb93e9f3d9915/revisions/0/blocks/heading-f78c623ad2a1e2ac"
+        ],
+        "confidence": 1
+      },
+      "score": {
+        "parseOk": true,
+        "answerCorrect": true,
+        "answerConceptRecall": 1,
+        "citationResolutionRate": 1,
+        "documentCitationCoverage": 1,
+        "evidenceCitationCoverage": 0.3333333333333333,
+        "relationshipCitationCoverage": 1,
+        "citationPrecision": 0.3333333333333333,
+        "citedDocuments": [
+          "doc-005",
+          "doc-006"
+        ],
+        "taskSuccess": true
+      },
+      "artifacts": {
+        "promptPath": "results/live/astra-r1/trials/relationship-current-waiver-series__anx.prompt.md",
+        "responsePath": "results/live/astra-r1/trials/relationship-current-waiver-series__anx.response.json",
+        "eventsPath": "results/live/astra-r1/trials/relationship-current-waiver-series__anx.events.jsonl"
+      }
+    },
+    {
+      "id": "relationship-current-waiver-series__markdown",
+      "taskId": "relationship-current-waiver-series",
+      "arm": "markdown",
+      "status": "completed",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "actualModels": [],
+      "process": {
+        "code": 0,
+        "wallTimeMs": 14385.09,
+        "stderr": "Reading additional input from stdin...\n"
+      },
+      "usage": {
+        "input_tokens": 17593,
+        "reported_input_tokens": 48825,
+        "cache_read_tokens": 31232,
+        "output_tokens": 265,
+        "total_tokens": 49090,
+        "tool_calls": 2,
+        "api_calls": 3
+      },
+      "toolCommands": [
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search 'Which California annual waiver report supersedes the other report in this corpus, and what total waiver count does each version report?' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown relationships 'doc-005' both\""
+      ],
+      "protocol": {
+        "noHarness": true,
+        "noMemory": true,
+        "freshSession": true,
+        "apiCallLimit": 8,
+        "apiCallLimitObserved": 3,
+        "apiCallLimitMet": true,
+        "commandAudit": {
+          "passed": true,
+          "commands": 2,
+          "violations": []
+        }
+      },
+      "parsed": {
+        "answer": "The California Department of Education’s 2025 Annual Report of Waiver Activity supersedes the 2024 Annual Report of Waiver Activity. The 2025 report lists 172 total waivers; the 2024 report lists 129 total waivers.",
+        "citations": [
+          "markdown://doc-005/doc-005-cde-waiver-report-2025.md#L9-L9",
+          "markdown://doc-005/doc-005-cde-waiver-report-2025.md#L167-L167",
+          "markdown://doc-006/doc-006-cde-waiver-report-2024.md#L190-L190"
+        ],
+        "confidence": 1
+      },
+      "score": {
+        "parseOk": true,
+        "answerCorrect": true,
+        "answerConceptRecall": 1,
+        "citationResolutionRate": 1,
+        "documentCitationCoverage": 1,
+        "evidenceCitationCoverage": 0.3333333333333333,
+        "relationshipCitationCoverage": 1,
+        "citationPrecision": 0.3333333333333333,
+        "citedDocuments": [
+          "doc-005",
+          "doc-006"
+        ],
+        "taskSuccess": true
+      },
+      "artifacts": {
+        "promptPath": "results/live/astra-r1/trials/relationship-current-waiver-series__markdown.prompt.md",
+        "responsePath": "results/live/astra-r1/trials/relationship-current-waiver-series__markdown.response.json",
+        "eventsPath": "results/live/astra-r1/trials/relationship-current-waiver-series__markdown.events.jsonl"
+      }
+    },
+    {
+      "id": "relationship-current-monetary-policy-report__anx",
+      "taskId": "relationship-current-monetary-policy-report",
+      "arm": "anx",
+      "status": "completed",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "actualModels": [],
+      "process": {
+        "code": 0,
+        "wallTimeMs": 17579.934,
+        "stderr": "Reading additional input from stdin...\n"
+      },
+      "usage": {
+        "input_tokens": 19789,
+        "reported_input_tokens": 71629,
+        "cache_read_tokens": 51840,
+        "output_tokens": 365,
+        "total_tokens": 71994,
+        "tool_calls": 3,
+        "api_calls": 4
+      },
+      "toolCommands": [
+        "/bin/zsh -lc \"node corpus-tool.mjs anx search 'Which Monetary Policy Report supersedes the other in this corpus, and what 12-month increase in the total PCE price index does each report cite for its most recent month?' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs anx relationships 'doc-001' both\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs anx search-document 'doc-001' 'supersedes' 12\""
+      ],
+      "protocol": {
+        "noHarness": true,
+        "noMemory": true,
+        "freshSession": true,
+        "apiCallLimit": 8,
+        "apiCallLimitObserved": 4,
+        "apiCallLimitMet": true,
+        "commandAudit": {
+          "passed": true,
+          "commands": 3,
+          "violations": []
+        }
+      },
+      "parsed": {
+        "answer": "The June 2025 Monetary Policy Report supersedes the February 2025 report. The June report cites a 2.1% increase in the total PCE price index over the 12 months ending in April 2025; the February report cites a 2.6% increase over the 12 months ending in December 2024.",
+        "citations": [
+          "anx://pdf-6f8538cb4ce2902ac35cc9ec/revisions/0/relationships/relationship-mpr-2025-06-supersedes-2025-02",
+          "anx://pdf-6f8538cb4ce2902ac35cc9ec/revisions/0/blocks/paragraph-8eeec3d7d692dadd",
+          "anx://pdf-728293cfbfeb672979115ab9/revisions/0/blocks/paragraph-b6b9b3f35885bd33"
+        ],
+        "confidence": 1
+      },
+      "score": {
+        "parseOk": true,
+        "answerCorrect": true,
+        "answerConceptRecall": 1,
+        "citationResolutionRate": 1,
+        "documentCitationCoverage": 1,
+        "evidenceCitationCoverage": 0.6666666666666666,
+        "relationshipCitationCoverage": 1,
+        "citationPrecision": 0.6666666666666666,
+        "citedDocuments": [
+          "doc-001",
+          "doc-009"
+        ],
+        "taskSuccess": true
+      },
+      "artifacts": {
+        "promptPath": "results/live/astra-r1/trials/relationship-current-monetary-policy-report__anx.prompt.md",
+        "responsePath": "results/live/astra-r1/trials/relationship-current-monetary-policy-report__anx.response.json",
+        "eventsPath": "results/live/astra-r1/trials/relationship-current-monetary-policy-report__anx.events.jsonl"
+      }
+    },
+    {
+      "id": "relationship-current-monetary-policy-report__markdown",
+      "taskId": "relationship-current-monetary-policy-report",
+      "arm": "markdown",
+      "status": "completed",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "actualModels": [],
+      "process": {
+        "code": 0,
+        "wallTimeMs": 25659.977,
+        "stderr": "Reading additional input from stdin...\n"
+      },
+      "usage": {
+        "input_tokens": 19913,
+        "reported_input_tokens": 71241,
+        "cache_read_tokens": 51328,
+        "output_tokens": 348,
+        "total_tokens": 71589,
+        "tool_calls": 3,
+        "api_calls": 4
+      },
+      "toolCommands": [
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search 'Which Monetary Policy Report supersedes the other in this corpus, and what 12-month increase in the total PCE price index does each report cite for its most recent month?' 12\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown relationships 'doc-001' both\"",
+        "/bin/zsh -lc \"node corpus-tool.mjs markdown search-document 'doc-001' 'supersedes' 12\""
+      ],
+      "protocol": {
+        "noHarness": true,
+        "noMemory": true,
+        "freshSession": true,
+        "apiCallLimit": 8,
+        "apiCallLimitObserved": 4,
+        "apiCallLimitMet": true,
+        "commandAudit": {
+          "passed": true,
+          "commands": 3,
+          "violations": []
+        }
+      },
+      "parsed": {
+        "answer": "The June 2025 Monetary Policy Report supersedes the February 2025 report. June’s report cites a 2.1% increase in the total PCE price index over the 12 months ending April 2025; February’s report cites a 2.6% increase over the 12 months ending December 2024.",
+        "citations": [
+          "markdown://doc-001/doc-001-fed-monetary-policy-report-2025-06.md#L9-L9",
+          "markdown://doc-001/doc-001-fed-monetary-policy-report-2025-06.md#L185-L185",
+          "markdown://doc-009/doc-009-fed-monetary-policy-report-2025-02.md#L202-L202"
+        ],
+        "confidence": 1
+      },
+      "score": {
+        "parseOk": true,
+        "answerCorrect": true,
+        "answerConceptRecall": 1,
+        "citationResolutionRate": 1,
+        "documentCitationCoverage": 1,
+        "evidenceCitationCoverage": 0.6666666666666666,
+        "relationshipCitationCoverage": 1,
+        "citationPrecision": 0.6666666666666666,
+        "citedDocuments": [
+          "doc-001",
+          "doc-009"
+        ],
+        "taskSuccess": true
+      },
+      "artifacts": {
+        "promptPath": "results/live/astra-r1/trials/relationship-current-monetary-policy-report__markdown.prompt.md",
+        "responsePath": "results/live/astra-r1/trials/relationship-current-monetary-policy-report__markdown.response.json",
+        "eventsPath": "results/live/astra-r1/trials/relationship-current-monetary-policy-report__markdown.events.jsonl"
+      }
+    }
+  ],
+  "claimBoundary": "One live repetition over six cross-document tasks compares agent behavior through equivalent deterministic corpus tools. It is a smoke test, not an enterprise-scale effect estimate or a universal ANX-versus-Markdown result."
+}

@@ -22,6 +22,7 @@ jobs:
           python-version: "3.12"
       - run: npm ci
       - run: npm run check
+      - run: npm run check:benchmarks
       - run: npm run conformance -- examples/sample.anx ANX-C3
       - name: Reference CLI smoke
         run: |

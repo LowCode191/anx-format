@@ -1,0 +1,50 @@
+{
+  "schema": "anx.corpus-comparative-contract.v1",
+  "benchmarkId": "markdown-corpus-parity-v1",
+  "frozenAt": "2026-10-15T15:55:00Z",
+  "purpose": "Compare corpus-level retrieval, citation and cross-document answering for a repository of ANX files against a strong Markdown repository generated from the same canonical content, on a corpus of twelve freely downloadable public documents.",
+  "arms": {
+    "anx-native-corpus": "Typed ANX blocks, document metadata, revision-pinned stable citations, and typed relationship edges carried with the document.",
+    "markdown-strong-corpus": "One GFM Markdown file per document with YAML-style metadata, page-independent file/line citations, and equivalent declared relationship metadata. It is intentionally stronger than plain unstructured Markdown."
+  },
+  "controls": [
+    "Both arms use the same twelve public documents and the same canonical text produced by one import of each source.",
+    "Both arms use the same deterministic BM25-style lexical ranker, query limit (12), and per-document diversity cap (4).",
+    "The target document path is never supplied to corpus search; the model only sees tool output.",
+    "Source ANX packages are read-only and must remain byte-identical across the run.",
+    "Relationship fixtures are supplied equally to both arms and are labeled benchmark-series assertions.",
+    "No embedding model is used; semantic and vector retrieval are a separate treatment.",
+    "Live trials run in a fresh vanilla CLI session with no harness, memory, project files or web access, and may execute only the corpus tool."
+  ],
+  "qualification": {
+    "statusMeaning": "PASS qualifies benchmark integrity and both corpus transports. It does not establish ANX superiority.",
+    "discoveryTasks": 24,
+    "crossDocumentTasks": 6,
+    "retrievalLimit": 12,
+    "maximumHitsPerDocument": 4,
+    "scaledLogicalDocuments": 240
+  },
+  "livePlan": {
+    "provider": "codex",
+    "models": [
+      {
+        "requestedModel": "gpt-6-astra",
+        "tier": "frontier",
+        "repetitions": 1
+      },
+      {
+        "requestedModel": "gpt-5.6-sol",
+        "tier": "workhorse (continuity anchor with the private August 2026 run)",
+        "repetitions": 1
+      },
+      {
+        "requestedModel": "gpt-5.6-luna",
+        "tier": "fast, lower cost",
+        "repetitions": 2
+      }
+    ],
+    "apiCallLimitPerTrial": 8,
+    "freshSessionPerTrial": true
+  },
+  "claimBoundary": "This is a twelve-real-document corpus retrieval regime with a 240-logical-document deterministic scale probe and a small live answer smoke. It does not establish enterprise-scale production latency, vector-search quality, access-control behavior, human usability, universal parser quality, or a general ANX advantage over every Markdown RAG implementation."
+}

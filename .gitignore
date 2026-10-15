@@ -9,3 +9,8 @@ __pycache__/
 *.pyc
 .DS_Store
 *.log
+
+# Benchmark working data (sources are fetched, packages and indexes are rebuilt)
+benchmarks/*/corpus/sources/
+benchmarks/*/corpus/packages/
+benchmarks/*/runtime/

@@ -1,0 +1,233 @@
+{
+  "schema": "anx.corpus-comparative-confirmation.v1",
+  "generatedAt": "2026-10-15T16:12:51.715Z",
+  "benchmarkId": "markdown-corpus-parity-v1",
+  "status": "PASS",
+  "observation": "parity-observed",
+  "corpus": {
+    "realDocuments": 12,
+    "discoveryTasks": 24,
+    "crossDocumentTasks": 6,
+    "adjudicatedCrossDocumentTasks": 6,
+    "logicalScaleProbeDocuments": 240
+  },
+  "deterministic": {
+    "status": "PASS",
+    "gates": "10/10",
+    "aggregates": [
+      {
+        "arm": "anx-native-corpus",
+        "documents": 12,
+        "evidenceUnits": 3976,
+        "discoveryDocumentRecallAt12": 1,
+        "discoveryEvidenceRecallAt12": 0.697917,
+        "crossDocumentRecallAt12": 1,
+        "crossDocumentEvidenceRecallAt12": 0.444444,
+        "relationshipTaskRecallAt12": 0.5,
+        "citationResolutionRate": 1,
+        "medianQueryMs": 27.194,
+        "p95QueryMs": 29.74,
+        "meanPayloadCharacters": 12038.866667
+      },
+      {
+        "arm": "markdown-strong-corpus",
+        "documents": 12,
+        "evidenceUnits": 4021,
+        "discoveryDocumentRecallAt12": 1,
+        "discoveryEvidenceRecallAt12": 0.677083,
+        "crossDocumentRecallAt12": 1,
+        "crossDocumentEvidenceRecallAt12": 0.444444,
+        "relationshipTaskRecallAt12": 0.5,
+        "citationResolutionRate": 1,
+        "medianQueryMs": 30.655,
+        "p95QueryMs": 33.05,
+        "meanPayloadCharacters": 11362.766667
+      }
+    ]
+  },
+  "runs": [
+    {
+      "runLabel": "luna-r1",
+      "provider": "codex",
+      "requestedModel": "gpt-5.6-luna",
+      "status": "HOLD",
+      "generatedAt": "2026-10-15T16:05:43.478Z",
+      "trials": 12,
+      "completed": 11
+    },
+    {
+      "runLabel": "sol-r1",
+      "provider": "codex",
+      "requestedModel": "gpt-5.6-sol",
+      "status": "PASS",
+      "generatedAt": "2026-10-15T16:08:07.589Z",
+      "trials": 12,
+      "completed": 12
+    },
+    {
+      "runLabel": "astra-r1",
+      "provider": "codex",
+      "requestedModel": "gpt-6-astra",
+      "status": "PASS",
+      "generatedAt": "2026-10-15T16:10:26.247Z",
+      "trials": 12,
+      "completed": 12
+    },
+    {
+      "runLabel": "luna-r2",
+      "provider": "codex",
+      "requestedModel": "gpt-5.6-luna",
+      "status": "PASS",
+      "generatedAt": "2026-10-15T16:12:06.334Z",
+      "trials": 12,
+      "completed": 12
+    }
+  ],
+  "aggregates": [
+    {
+      "model": "gpt-5.6-luna",
+      "provider": "codex",
+      "arm": "anx",
+      "repetitions": 2,
+      "trials": 12,
+      "completed": 12,
+      "taskSuccesses": 12,
+      "taskSuccessRate": 1,
+      "correctAnswers": 12,
+      "protocolFailures": 0,
+      "answerConceptRecall": 1,
+      "citationResolutionRate": 1,
+      "documentCitationCoverage": 1,
+      "citationPrecision": 0.784722,
+      "medianUncachedInputTokens": 23536,
+      "medianTotalTokens": 65753,
+      "medianToolCalls": 3,
+      "medianSeconds": 14.36
+    },
+    {
+      "model": "gpt-5.6-luna",
+      "provider": "codex",
+      "arm": "markdown",
+      "repetitions": 2,
+      "trials": 12,
+      "completed": 11,
+      "taskSuccesses": 11,
+      "taskSuccessRate": 0.916667,
+      "correctAnswers": 12,
+      "protocolFailures": 1,
+      "answerConceptRecall": 1,
+      "citationResolutionRate": 1,
+      "documentCitationCoverage": 1,
+      "citationPrecision": 0.758333,
+      "medianUncachedInputTokens": 20150,
+      "medianTotalTokens": 70929,
+      "medianToolCalls": 3,
+      "medianSeconds": 13.9
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "provider": "codex",
+      "arm": "anx",
+      "repetitions": 1,
+      "trials": 6,
+      "completed": 6,
+      "taskSuccesses": 6,
+      "taskSuccessRate": 1,
+      "correctAnswers": 6,
+      "protocolFailures": 0,
+      "answerConceptRecall": 1,
+      "citationResolutionRate": 1,
+      "documentCitationCoverage": 1,
+      "citationPrecision": 0.822222,
+      "medianUncachedInputTokens": 20587,
+      "medianTotalTokens": 51890,
+      "medianToolCalls": 3,
+      "medianSeconds": 17.04
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "provider": "codex",
+      "arm": "markdown",
+      "repetitions": 1,
+      "trials": 6,
+      "completed": 6,
+      "taskSuccesses": 6,
+      "taskSuccessRate": 1,
+      "correctAnswers": 6,
+      "protocolFailures": 0,
+      "answerConceptRecall": 1,
+      "citationResolutionRate": 1,
+      "documentCitationCoverage": 1,
+      "citationPrecision": 0.766667,
+      "medianUncachedInputTokens": 20918,
+      "medianTotalTokens": 69258,
+      "medianToolCalls": 3,
+      "medianSeconds": 19.63
+    },
+    {
+      "model": "gpt-6-astra",
+      "provider": "codex",
+      "arm": "anx",
+      "repetitions": 1,
+      "trials": 6,
+      "completed": 6,
+      "taskSuccesses": 6,
+      "taskSuccessRate": 1,
+      "correctAnswers": 6,
+      "protocolFailures": 0,
+      "answerConceptRecall": 1,
+      "citationResolutionRate": 1,
+      "documentCitationCoverage": 1,
+      "citationPrecision": 0.646825,
+      "medianUncachedInputTokens": 19789,
+      "medianTotalTokens": 53497,
+      "medianToolCalls": 2,
+      "medianSeconds": 17.58
+    },
+    {
+      "model": "gpt-6-astra",
+      "provider": "codex",
+      "arm": "markdown",
+      "repetitions": 1,
+      "trials": 6,
+      "completed": 6,
+      "taskSuccesses": 6,
+      "taskSuccessRate": 1,
+      "correctAnswers": 6,
+      "protocolFailures": 0,
+      "answerConceptRecall": 1,
+      "citationResolutionRate": 1,
+      "documentCitationCoverage": 1,
+      "citationPrecision": 0.711111,
+      "medianUncachedInputTokens": 19913,
+      "medianTotalTokens": 52893,
+      "medianToolCalls": 3,
+      "medianSeconds": 19.74
+    }
+  ],
+  "perModel": [
+    {
+      "model": "gpt-5.6-luna",
+      "anxSuccesses": 12,
+      "markdownSuccesses": 11,
+      "trialsPerArm": 12,
+      "difference": 1
+    },
+    {
+      "model": "gpt-5.6-sol",
+      "anxSuccesses": 6,
+      "markdownSuccesses": 6,
+      "trialsPerArm": 6,
+      "difference": 0
+    },
+    {
+      "model": "gpt-6-astra",
+      "anxSuccesses": 6,
+      "markdownSuccesses": 6,
+      "trialsPerArm": 6,
+      "difference": 0
+    }
+  ],
+  "excludedTasks": [],
+  "claimBoundary": "This confirmation pools 4 live run(s) over 6 adjudicated cross-document tasks with 12 public documents. It does not establish enterprise-scale performance, universal format parity, production latency, cost, security, or market demand."
+}

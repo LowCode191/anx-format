@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.1 — importer fixes and the public parity benchmark
+
+- Importer: page-break block ids stay unique when an Office source reports non-monotonic page numbers. DOCX files whose tables or lists were attributed to earlier pages previously failed validation with duplicate `page-break-…` ids. Regression test added.
+- Importer: new `ANX_DOCLING_TIMEOUT_SECONDS` (default 240, maximum 600) so long reports can be imported on slower machines without editing code.
+- Benchmark: `benchmarks/markdown-corpus-parity/` is a reproducible comparison of a repository of ANX files against a strong Markdown repository built from the same canonical text, on twelve freely downloadable public documents. It ships the corpus manifest with checksums, fetch and import scripts, frozen tasks, deterministic qualification, a live stage for fresh CLI model sessions, an adjudicator and the retained results. CI type-checks the harness (`npm run check:benchmarks`).
+- README: CI badge, a Testing and evidence section, and a pointer to the benchmark results.
+
 ## 0.4.0 — first public developer preview
 
 Extracted from the private development line of the format. Contents:

@@ -1,6 +1,6 @@
 {
   "name": "anx-format",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "ANX (Agent Native eXtensible): an open single-file document format with a canonical structured model, retained sources, stable node IDs and revision-checked transactions. Reference SDK, CLI, conformance runner, read-only viewer and MCP servers.",
   "license": "Apache-2.0",
   "author": "LowCode191",
@@ -57,7 +57,14 @@
     "anx": "tsx src/cli.ts",
     "mcp": "tsx src/mcp-server.ts",
     "evidence-mcp": "tsx src/evidence-mcp-server.ts",
-    "sbom:generate": "node scripts/generate-sbom.mjs"
+    "sbom:generate": "node scripts/generate-sbom.mjs",
+    "check:benchmarks": "tsc -p benchmarks/tsconfig.json",
+    "benchmark:parity:fetch": "node benchmarks/markdown-corpus-parity/fetch-corpus.mjs",
+    "benchmark:parity:prepare": "node --import tsx benchmarks/markdown-corpus-parity/prepare-corpus.ts",
+    "benchmark:parity:verify-tasks": "node --import tsx benchmarks/markdown-corpus-parity/verify-tasks.ts",
+    "benchmark:parity:qualify": "node --import tsx benchmarks/markdown-corpus-parity/run-qualification.ts",
+    "benchmark:parity:live": "node --import tsx benchmarks/markdown-corpus-parity/run-live-smoke.ts",
+    "benchmark:parity:adjudicate": "node --import tsx benchmarks/markdown-corpus-parity/adjudicate.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

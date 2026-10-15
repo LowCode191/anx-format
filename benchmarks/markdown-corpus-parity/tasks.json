@@ -1,0 +1,1328 @@
+{
+  "schema": "anx.corpus-comparative-tasks.v1",
+  "benchmarkId": "markdown-corpus-parity-v1",
+  "frozenAt": "2026-10-15T15:55:00Z",
+  "scoring": {
+    "answer": "A task is correct only when the normalized answer contains at least one alternative from every requiredAnswerConcepts group.",
+    "evidence": "Evidence fragment groups are checked against the text of returned or cited evidence units after normalization.",
+    "taskSuccess": "Every required concept present, every citation resolving, and a citation from every required document and required relationship."
+  },
+  "discoveryTasks": [
+    {
+      "id": "doc-001-t01",
+      "documentId": "doc-001",
+      "family": "exact-fact-with-citation",
+      "question": "At what annualized rate did banks' core loan holdings grow during the first five months of 2025?",
+      "searchHints": [
+        "core loan holdings",
+        "2.2 percent annualized rate"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "2.2 percent",
+          "2.2%"
+        ],
+        [
+          "annualized"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "2.2 percent annualized rate"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          42
+        ]
+      }
+    },
+    {
+      "id": "doc-001-t02",
+      "documentId": "doc-001",
+      "family": "numeric-or-table-extraction-with-citation",
+      "question": "Since early January 2025, by how much had total Federal Reserve assets decreased, and what balance-sheet level remained?",
+      "searchHints": [
+        "total Federal Reserve assets have decreased",
+        "176 billion"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "176 billion",
+          "$176 billion"
+        ],
+        [
+          "6.7 trillion",
+          "$6.7 trillion"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "decreased $176 billion"
+        ],
+        [
+          "balance sheet at $6.7 trillion",
+          "to $6.7 trillion"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          50
+        ]
+      }
+    },
+    {
+      "id": "doc-002-t01",
+      "documentId": "doc-002",
+      "family": "exact-fact-with-citation",
+      "question": "What are the four functions of the NIST AI RMF Core?",
+      "searchHints": [
+        "Core is composed of four functions",
+        "GOVERN MAP MEASURE MANAGE"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "govern"
+        ],
+        [
+          "map"
+        ],
+        [
+          "measure"
+        ],
+        [
+          "manage"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "four functions: GOVERN, MAP, MEASURE, and MANAGE"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          25
+        ]
+      }
+    },
+    {
+      "id": "doc-002-t02",
+      "documentId": "doc-002",
+      "family": "cross-section-synthesis-with-citations",
+      "question": "List the characteristics of trustworthy AI systems articulated by the NIST AI RMF.",
+      "searchHints": [
+        "Characteristics of trustworthy AI systems include",
+        "valid and reliable"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "valid and reliable"
+        ],
+        [
+          "safe"
+        ],
+        [
+          "secure and resilient"
+        ],
+        [
+          "accountable and transparent"
+        ],
+        [
+          "explainable and interpretable"
+        ],
+        [
+          "privacy-enhanced",
+          "privacy enhanced"
+        ],
+        [
+          "fair",
+          "harmful bias managed"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "valid and reliable"
+        ],
+        [
+          "safe"
+        ],
+        [
+          "secure and resilient"
+        ],
+        [
+          "accountable and transparent"
+        ],
+        [
+          "explainable and interpretable"
+        ],
+        [
+          "privacy-enhanced"
+        ],
+        [
+          "fair with harmful bias managed"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          17
+        ]
+      }
+    },
+    {
+      "id": "doc-003-t01",
+      "documentId": "doc-003",
+      "family": "exact-fact-with-citation",
+      "question": "What two AI models did the initial Docling release provide, and what did each model do?",
+      "searchHints": [
+        "initially release two highly capable AI models",
+        "TableFormer"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "layout analysis model",
+          "object-detector for page elements"
+        ],
+        [
+          "tableformer"
+        ],
+        [
+          "table structure recognition"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "layout analysis model",
+          "object-detector for page elements"
+        ],
+        [
+          "TableFormer",
+          "table structure recognition model"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          3
+        ]
+      }
+    },
+    {
+      "id": "doc-003-t02",
+      "documentId": "doc-003",
+      "family": "numeric-or-table-extraction-with-citation",
+      "question": "Which OCR engine did the initial Docling release use, what image resolution did it feed by default, and what CPU processing time was observed?",
+      "searchHints": [
+        "EasyOCR",
+        "216 dpi"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "easyocr"
+        ],
+        [
+          "216 dpi"
+        ],
+        [
+          "30 seconds per page",
+          "upwards of 30 seconds"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "EasyOCR"
+        ],
+        [
+          "216 dpi"
+        ],
+        [
+          "upwards of 30 seconds per page"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          4
+        ]
+      }
+    },
+    {
+      "id": "doc-004-t01",
+      "documentId": "doc-004",
+      "family": "exact-fact-with-citation",
+      "question": "What universal markup format does SmolDocling generate for each page, and how many parameters does the model have?",
+      "searchHints": [
+        "DocTags",
+        "256M parameters"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "DocTags"
+        ],
+        [
+          "256M",
+          "256 million",
+          "256-million"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "generating DocTags"
+        ],
+        [
+          "256M parameters"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "doc-004-t02",
+      "documentId": "doc-004",
+      "family": "exact-fact-with-citation",
+      "question": "What page conversion time and VRAM footprint does the SmolDocling paper report for inference with VLLM on an A100 GPU?",
+      "searchHints": [
+        "page conversion time",
+        "0.489 GB of VRAM"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "0.35 seconds",
+          "0.35 s",
+          "0.35 sec"
+        ],
+        [
+          "0.489 GB",
+          "0.489"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "page conversion time of 0.35 seconds"
+        ],
+        [
+          "0.489 GB of VRAM"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          7
+        ]
+      }
+    },
+    {
+      "id": "doc-005-t01",
+      "documentId": "doc-005",
+      "family": "numeric-or-table-extraction-with-citation",
+      "question": "How many general, federal, specific, and total waiver requests were reported for 2025?",
+      "searchHints": [
+        "Waiver Requests for 2025",
+        "172 Total Waivers"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "116 general"
+        ],
+        [
+          "14 federal"
+        ],
+        [
+          "42 specific"
+        ],
+        [
+          "172 total"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "116 General Waivers"
+        ],
+        [
+          "14 Federal Waivers"
+        ],
+        [
+          "42 Specific Waivers"
+        ],
+        [
+          "172 Total Waivers"
+        ]
+      ],
+      "expectedLocation": {
+        "doclingCitations": [
+          "source://docling/chunks/1"
+        ]
+      }
+    },
+    {
+      "id": "doc-005-t02",
+      "documentId": "doc-005",
+      "family": "numeric-or-table-extraction-with-citation",
+      "question": "What were the four dispositions of the 2025 waiver requests?",
+      "searchHints": [
+        "Dispositions of 2025 Waiver Requests",
+        "134 Waivers Approved"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "134 waivers approved",
+          "134 approved"
+        ],
+        [
+          "1 waiver denied",
+          "one waiver denied"
+        ],
+        [
+          "30 waivers withdrawn",
+          "30 withdrawn"
+        ],
+        [
+          "7 waivers with no formal action",
+          "7 with no formal action"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "134 Waivers Approved"
+        ],
+        [
+          "1 Waiver Denied"
+        ],
+        [
+          "30 Waivers Withdrawn"
+        ],
+        [
+          "7 Waivers With No Formal Action Taken"
+        ]
+      ],
+      "expectedLocation": {
+        "doclingCitations": [
+          "source://docling/chunks/1"
+        ]
+      }
+    },
+    {
+      "id": "doc-006-t01",
+      "documentId": "doc-006",
+      "family": "numeric-or-table-extraction-with-citation",
+      "question": "How many general, federal, specific, and total waiver requests were reported for 2024?",
+      "searchHints": [
+        "Waiver Requests for 2024",
+        "129 Total Waivers"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "85 general"
+        ],
+        [
+          "6 federal"
+        ],
+        [
+          "38 specific"
+        ],
+        [
+          "129 total"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "85 General Waivers"
+        ],
+        [
+          "6 Federal Waivers"
+        ],
+        [
+          "38 Specific Waivers"
+        ],
+        [
+          "129 Total Waivers"
+        ]
+      ],
+      "expectedLocation": {
+        "doclingCitations": [
+          "source://docling/chunks/1"
+        ]
+      }
+    },
+    {
+      "id": "doc-006-t02",
+      "documentId": "doc-006",
+      "family": "numeric-or-table-extraction-with-citation",
+      "question": "What were the four dispositions of the 2024 waiver requests?",
+      "searchHints": [
+        "Dispositions of 2024 Waiver Requests",
+        "103 Waivers Approved"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "103 waivers approved",
+          "103 approved"
+        ],
+        [
+          "0 waivers denied",
+          "zero waivers denied"
+        ],
+        [
+          "15 waivers withdrawn",
+          "15 withdrawn"
+        ],
+        [
+          "11 waivers with no formal action",
+          "11 with no formal action"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "103 Waivers Approved"
+        ],
+        [
+          "0 Waivers Denied"
+        ],
+        [
+          "15 Waivers Withdrawn"
+        ],
+        [
+          "11 Waivers with No Formal Action Taken"
+        ]
+      ],
+      "expectedLocation": {
+        "doclingCitations": [
+          "source://docling/chunks/1"
+        ]
+      }
+    },
+    {
+      "id": "doc-007-t01",
+      "documentId": "doc-007",
+      "family": "numeric-or-table-extraction-with-citation",
+      "question": "For the 2023-24 TK survey, how many LEAs were surveyed and responded, and what response rate did the report state?",
+      "searchHints": [
+        "survey was sent to 2,208 LEAs",
+        "1,579 responses"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "2,208",
+          "2208"
+        ],
+        [
+          "1,579",
+          "1579"
+        ],
+        [
+          "72 percent",
+          "72%"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "survey was sent to 2,208 LEAs"
+        ],
+        [
+          "1,579 responses were recorded"
+        ],
+        [
+          "about 72 percent"
+        ]
+      ],
+      "expectedLocation": {
+        "doclingCitations": [
+          "source://docling/chunks/6"
+        ]
+      }
+    },
+    {
+      "id": "doc-007-t02",
+      "documentId": "doc-007",
+      "family": "numeric-or-table-extraction-with-citation",
+      "question": "In 2023-24, what shares and counts of school-district and charter-school TK teachers of early enrollment children did not meet the additional requirements?",
+      "searchHints": [
+        "54 of the 749",
+        "85 of the 330"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "54"
+        ],
+        [
+          "749"
+        ],
+        [
+          "7 percent",
+          "7%"
+        ],
+        [
+          "85"
+        ],
+        [
+          "330"
+        ],
+        [
+          "26 percent",
+          "26%"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "54 of the 749",
+          "7 percent"
+        ],
+        [
+          "85 of the 330",
+          "26 percent"
+        ]
+      ],
+      "expectedLocation": {
+        "doclingCitations": [
+          "source://docling/chunks/1"
+        ]
+      }
+    },
+    {
+      "id": "doc-008-t01",
+      "documentId": "doc-008",
+      "family": "numeric-or-table-extraction-with-citation",
+      "question": "For the 2024-25 TK survey, how many LEAs were surveyed and responded, and what response rate did the report state?",
+      "searchHints": [
+        "surveyed 1,464",
+        "952 responses were recorded"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "1,464",
+          "1464"
+        ],
+        [
+          "952"
+        ],
+        [
+          "65 percent",
+          "65%"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "surveyed 1,464"
+        ],
+        [
+          "952 responses were recorded"
+        ],
+        [
+          "about 65 percent"
+        ]
+      ],
+      "expectedLocation": {
+        "doclingCitations": [
+          "source://docling/chunks/1",
+          "source://docling/chunks/6"
+        ]
+      }
+    },
+    {
+      "id": "doc-008-t02",
+      "documentId": "doc-008",
+      "family": "numeric-or-table-extraction-with-citation",
+      "question": "In 2024-25, how did school-district and charter-school TK teachers of early enrollment children compare on meeting versus not meeting the additional requirements?",
+      "searchHints": [
+        "47 of the 504",
+        "39 of the 235"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "47"
+        ],
+        [
+          "504"
+        ],
+        [
+          "9 percent",
+          "9%"
+        ],
+        [
+          "457"
+        ],
+        [
+          "91 percent",
+          "91%"
+        ],
+        [
+          "39"
+        ],
+        [
+          "235"
+        ],
+        [
+          "17 percent",
+          "17%"
+        ],
+        [
+          "196"
+        ],
+        [
+          "83 percent",
+          "83%"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "47 of the 504",
+          "9 percent"
+        ],
+        [
+          "457 of the 504",
+          "91 percent"
+        ],
+        [
+          "39 of the 235",
+          "17 percent"
+        ],
+        [
+          "196 of the 235",
+          "83 percent"
+        ]
+      ],
+      "expectedLocation": {
+        "doclingCitations": [
+          "source://docling/chunks/2"
+        ]
+      }
+    },
+    {
+      "id": "doc-009-t01",
+      "documentId": "doc-009",
+      "family": "exact-fact-with-citation",
+      "question": "By how many basis points did the FOMC lower the target range for the policy rate over its September, November, and December 2024 meetings, and what range resulted?",
+      "searchHints": [
+        "cumulative 100 basis points",
+        "4¼ to 4½ percent"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "100 basis points",
+          "1 percentage point",
+          "one percentage point"
+        ],
+        [
+          "4¼ to 4½",
+          "4.25 to 4.5",
+          "4.25 percent to 4.5",
+          "4-1/4 to 4-1/2",
+          "4 1/4 to 4 1/2",
+          "4.25-4.5",
+          "4.25 4.5"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "cumulative 100 basis points"
+        ],
+        [
+          "4¼ to 4½ percent"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          11
+        ]
+      }
+    },
+    {
+      "id": "doc-009-t02",
+      "documentId": "doc-009",
+      "family": "exact-fact-with-citation",
+      "question": "According to the February 2025 report, by how much did the total PCE price index and the core PCE price index rise over the 12 months ending in December 2024?",
+      "searchHints": [
+        "rose 2.6 percent over the 12 months ending in December",
+        "core PCE price index rose 2.8 percent"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "2.6 percent",
+          "2.6%"
+        ],
+        [
+          "2.8 percent",
+          "2.8%"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "rose 2.6 percent over the 12 months ending in December"
+        ],
+        [
+          "rose 2.8 percent last year"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          11
+        ]
+      }
+    },
+    {
+      "id": "doc-010-t01",
+      "documentId": "doc-010",
+      "family": "exact-fact-with-citation",
+      "question": "Which Executive Order does the Generative AI Profile cite as its basis, and of which NIST framework is it a cross-sectoral profile and companion resource?",
+      "searchHints": [
+        "Executive Order (EO) 14110",
+        "companion resource for the AI Risk Management Framework"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "14110"
+        ],
+        [
+          "AI RMF 1.0",
+          "AI Risk Management Framework",
+          "AI RMF"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "Executive Order (EO) 14110",
+          "EO 14110"
+        ],
+        [
+          "companion resource for the AI Risk Management Framework"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "doc-010-t02",
+      "documentId": "doc-010",
+      "family": "exact-fact-with-citation",
+      "question": "How does the Generative AI Profile define confabulation, and by what colloquial terms does it say the phenomenon is known?",
+      "searchHints": [
+        "Confabulation",
+        "known colloquially as"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "erroneous or false content",
+          "erroneous",
+          "false content"
+        ],
+        [
+          "hallucination",
+          "hallucinations"
+        ],
+        [
+          "fabrication",
+          "fabrications"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "erroneous or false content"
+        ],
+        [
+          "known colloquially as"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          8,
+          10
+        ]
+      }
+    },
+    {
+      "id": "doc-011-t01",
+      "documentId": "doc-011",
+      "family": "exact-fact-with-citation",
+      "question": "Into which four groups does the SSDF organize its practices?",
+      "searchHints": [
+        "organized into four groups",
+        "Prepare the Organization (PO)"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "Prepare the Organization"
+        ],
+        [
+          "Protect the Software"
+        ],
+        [
+          "Produce Well-Secured Software",
+          "Well-Secured Software"
+        ],
+        [
+          "Respond to Vulnerabilities"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "organized into four groups"
+        ],
+        [
+          "Prepare the Organization (PO)"
+        ],
+        [
+          "Protect the Software (PS)"
+        ],
+        [
+          "Respond to Vulnerabilities (RV)"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          13
+        ]
+      }
+    },
+    {
+      "id": "doc-011-t02",
+      "documentId": "doc-011",
+      "family": "exact-fact-with-citation",
+      "question": "In response to which section of which Executive Order did NIST hold a June 2021 workshop for the SSDF update, and how many position papers did it receive?",
+      "searchHints": [
+        "Section 4 of Executive Order (EO) 14028",
+        "over 150 position papers"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "Section 4"
+        ],
+        [
+          "14028"
+        ],
+        [
+          "150"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "Section 4 of Executive Order (EO) 14028",
+          "Executive Order (EO) 14028"
+        ],
+        [
+          "over 150 position papers",
+          "150 position papers"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "doc-012-t01",
+      "documentId": "doc-012",
+      "family": "exact-fact-with-citation",
+      "question": "What TRL does the NASA guide say practice recommends a technology demonstrate prior to the Preliminary Design Review, and between which TRLs do development and demonstration occur?",
+      "searchHints": [
+        "demonstrates TRL 6 prior to the Preliminary Design Review",
+        "Development and demonstration occur between TRLs 4 through TRL 6"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "TRL 6"
+        ],
+        [
+          "Preliminary Design Review",
+          "PDR"
+        ],
+        [
+          "TRL 4",
+          "TRLs 4",
+          "4 through"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "demonstrates TRL 6 prior to the Preliminary Design Review"
+        ],
+        [
+          "Development and demonstration occur between TRLs 4 through TRL 6"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          5
+        ]
+      }
+    },
+    {
+      "id": "doc-012-t02",
+      "documentId": "doc-012",
+      "family": "exact-fact-with-citation",
+      "question": "How does the guide's table of TRL definitions define TRL 1 and TRL 9?",
+      "searchHints": [
+        "Basic principles observed and reported",
+        "Actual system flight proven through successful mission operations"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "basic principles observed and reported",
+          "basic principles observed"
+        ],
+        [
+          "flight proven through successful mission operations",
+          "flight proven",
+          "flight-proven"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "Basic principles observed and reported"
+        ],
+        [
+          "Actual system flight proven through successful mission operations"
+        ]
+      ],
+      "expectedLocation": {
+        "pdfPages": [
+          8,
+          12
+        ]
+      }
+    }
+  ],
+  "crossDocumentTasks": [
+    {
+      "id": "cross-waiver-year-over-year",
+      "family": "cross-document-numeric-comparison",
+      "question": "Compare the total waiver requests and their dispositions in the California 2024 and 2025 annual waiver reports.",
+      "requiredDocumentIds": [
+        "doc-005",
+        "doc-006"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "172"
+        ],
+        [
+          "129"
+        ],
+        [
+          "134"
+        ],
+        [
+          "103"
+        ],
+        [
+          "one denied",
+          "1 denied"
+        ],
+        [
+          "zero denied",
+          "0 denied"
+        ],
+        [
+          "30"
+        ],
+        [
+          "15"
+        ],
+        [
+          "7"
+        ],
+        [
+          "11"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "total of 172 waivers"
+        ],
+        [
+          "total of 129 waivers"
+        ],
+        [
+          "134 were approved"
+        ],
+        [
+          "103 were approved"
+        ]
+      ]
+    },
+    {
+      "id": "cross-tk-survey-year-over-year",
+      "family": "cross-document-numeric-comparison",
+      "question": "Compare the number of LEAs surveyed, responses recorded, and stated response rates in the 2023-24 and 2024-25 Transitional Kindergarten reports.",
+      "requiredDocumentIds": [
+        "doc-007",
+        "doc-008"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "2,208",
+          "2208"
+        ],
+        [
+          "1,579",
+          "1579"
+        ],
+        [
+          "72 percent",
+          "72%"
+        ],
+        [
+          "1,464",
+          "1464"
+        ],
+        [
+          "952"
+        ],
+        [
+          "65 percent",
+          "65%"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "survey was sent to 2,208"
+        ],
+        [
+          "1,579 responses were recorded"
+        ],
+        [
+          "survey was sent to 1,464",
+          "surveyed 1,464"
+        ],
+        [
+          "952 responses were recorded"
+        ]
+      ]
+    },
+    {
+      "id": "cross-ai-rmf-and-generative-ai-profile",
+      "family": "cross-document-synthesis",
+      "question": "Using NIST AI RMF 1.0 and its Generative AI Profile, state the four AI RMF Core functions and list the twelve risks the profile identifies as unique to or exacerbated by generative AI.",
+      "requiredDocumentIds": [
+        "doc-002",
+        "doc-010"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "govern"
+        ],
+        [
+          "map"
+        ],
+        [
+          "measure"
+        ],
+        [
+          "manage"
+        ],
+        [
+          "CBRN"
+        ],
+        [
+          "confabulation"
+        ],
+        [
+          "hateful content",
+          "dangerous, violent",
+          "dangerous violent"
+        ],
+        [
+          "data privacy"
+        ],
+        [
+          "environmental impacts",
+          "environmental"
+        ],
+        [
+          "harmful bias",
+          "homogenization"
+        ],
+        [
+          "human-AI configuration",
+          "human ai configuration"
+        ],
+        [
+          "information integrity"
+        ],
+        [
+          "information security"
+        ],
+        [
+          "intellectual property"
+        ],
+        [
+          "obscene",
+          "abusive content"
+        ],
+        [
+          "value chain"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "GOVERN, MAP, MEASURE, and MANAGE"
+        ],
+        [
+          "CBRN Information or Capabilities"
+        ],
+        [
+          "Value Chain and Component Integration"
+        ]
+      ]
+    },
+    {
+      "id": "cross-ai-framework-and-readiness",
+      "family": "cross-document-synthesis",
+      "question": "Using the NIST AI RMF and the NASA Technology Readiness Assessment guide, state the four AI RMF Core functions and give the guide's definitions of TRL 1 and TRL 9.",
+      "requiredDocumentIds": [
+        "doc-002",
+        "doc-012"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "govern"
+        ],
+        [
+          "map"
+        ],
+        [
+          "measure"
+        ],
+        [
+          "manage"
+        ],
+        [
+          "basic principles observed"
+        ],
+        [
+          "flight proven",
+          "flight-proven"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "GOVERN, MAP, MEASURE, and MANAGE"
+        ],
+        [
+          "Basic principles observed and reported"
+        ],
+        [
+          "flight proven through successful mission operations"
+        ]
+      ]
+    },
+    {
+      "id": "relationship-current-waiver-series",
+      "family": "relationship-and-current-release",
+      "question": "Which California annual waiver report supersedes the other report in this corpus, and what total waiver count does each version report?",
+      "requiredDocumentIds": [
+        "doc-005",
+        "doc-006"
+      ],
+      "requiredRelationshipIds": [
+        "relationship-waiver-2025-supersedes-2024"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "2025"
+        ],
+        [
+          "supersedes"
+        ],
+        [
+          "2024"
+        ],
+        [
+          "172"
+        ],
+        [
+          "129"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "supersedes doc-006"
+        ],
+        [
+          "total of 172 waivers"
+        ],
+        [
+          "total of 129 waivers"
+        ]
+      ]
+    },
+    {
+      "id": "relationship-current-monetary-policy-report",
+      "family": "relationship-and-current-release",
+      "question": "Which Monetary Policy Report supersedes the other in this corpus, and what 12-month increase in the total PCE price index does each report cite for its most recent month?",
+      "requiredDocumentIds": [
+        "doc-001",
+        "doc-009"
+      ],
+      "requiredRelationshipIds": [
+        "relationship-mpr-2025-06-supersedes-2025-02"
+      ],
+      "requiredAnswerConcepts": [
+        [
+          "June 2025"
+        ],
+        [
+          "supersedes"
+        ],
+        [
+          "February 2025"
+        ],
+        [
+          "2.1 percent",
+          "2.1%"
+        ],
+        [
+          "2.6 percent",
+          "2.6%"
+        ]
+      ],
+      "evidenceFragmentGroups": [
+        [
+          "supersedes doc-009"
+        ],
+        [
+          "rose 2.1 percent over the 12 months ending in April"
+        ],
+        [
+          "rose 2.6 percent over the 12 months ending in December"
+        ]
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relationship-waiver-2025-supersedes-2024",
+      "type": "supersedes",
+      "sourceDocumentId": "doc-005",
+      "targetDocumentId": "doc-006",
+      "authority": "human-approved",
+      "note": "Benchmark-series relationship: the 2025 annual report is the next annual edition after the 2024 report."
+    },
+    {
+      "id": "relationship-tk-2024-25-supersedes-2023-24",
+      "type": "supersedes",
+      "sourceDocumentId": "doc-008",
+      "targetDocumentId": "doc-007",
+      "authority": "human-approved",
+      "note": "Benchmark-series relationship: the 2024-25 report is the next annual edition after the 2023-24 report."
+    },
+    {
+      "id": "relationship-mpr-2025-06-supersedes-2025-02",
+      "type": "supersedes",
+      "sourceDocumentId": "doc-001",
+      "targetDocumentId": "doc-009",
+      "authority": "human-approved",
+      "note": "Benchmark-series relationship: the June 2025 Monetary Policy Report is the next semiannual edition after the February 2025 report."
+    },
+    {
+      "id": "relationship-genai-profile-derived-from-ai-rmf",
+      "type": "derived-from",
+      "sourceDocumentId": "doc-010",
+      "targetDocumentId": "doc-002",
+      "authority": "human-approved",
+      "note": "Benchmark-series relationship: the Generative AI Profile describes itself as a cross-sectoral profile of and companion resource for AI RMF 1.0."
+    }
+  ]
+}

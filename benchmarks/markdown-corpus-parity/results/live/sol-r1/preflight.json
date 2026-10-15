@@ -1,0 +1,43 @@
+{
+  "schema": "anx.corpus-live-preflight.v1",
+  "generatedAt": "2026-10-15T16:05:58.079Z",
+  "ready": true,
+  "blocking": [],
+  "executionBoundary": {
+    "provider": "codex",
+    "requestedModel": "gpt-5.6-sol",
+    "cliVersion": "codex-cli 0.153.3",
+    "noHarness": true,
+    "noMemory": true,
+    "freshSessionPerTrial": true,
+    "shellRestrictedToCorpusTool": true,
+    "corpusToolSha256": "e6dcf2608043d590fca23eb7c38db41aa764f4ce7318d298243dc17b270e94e7",
+    "corpusEngineSha256": "d4c519e0150efdfd0b7f5fdffb9a36d61b3c58d34734a8a8ee8af7cd29656a5e"
+  },
+  "checks": {
+    "qualification": {
+      "ok": true,
+      "detail": "PASS 10/10"
+    },
+    "cli": {
+      "ok": true,
+      "detail": "codex-cli 0.153.3"
+    },
+    "authentication": {
+      "ok": true,
+      "detail": "authenticated"
+    },
+    "indexes": {
+      "ok": true,
+      "detail": "12/12 documents"
+    },
+    "toolDryRuns": {
+      "ok": true,
+      "detail": "0/0"
+    },
+    "schema": {
+      "ok": true,
+      "detail": "answer.schema.json"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "anx.corpus-live-plan.v1",
+  "generatedAt": "2026-10-15T16:08:08.910Z",
+  "provider": "codex",
+  "requestedModel": "gpt-6-astra",
+  "freshSessionPerTrial": true,
+  "repetitions": 1,
+  "tasks": 6,
+  "trials": [
+    {
+      "id": "cross-waiver-year-over-year__anx",
+      "taskId": "cross-waiver-year-over-year",
+      "arm": "anx"
+    },
+    {
+      "id": "cross-waiver-year-over-year__markdown",
+      "taskId": "cross-waiver-year-over-year",
+      "arm": "markdown"
+    },
+    {
+      "id": "cross-tk-survey-year-over-year__anx",
+      "taskId": "cross-tk-survey-year-over-year",
+      "arm": "anx"
+    },
+    {
+      "id": "cross-tk-survey-year-over-year__markdown",
+      "taskId": "cross-tk-survey-year-over-year",
+      "arm": "markdown"
+    },
+    {
+      "id": "cross-ai-rmf-and-generative-ai-profile__anx",
+      "taskId": "cross-ai-rmf-and-generative-ai-profile",
+      "arm": "anx"
+    },
+    {
+      "id": "cross-ai-rmf-and-generative-ai-profile__markdown",
+      "taskId": "cross-ai-rmf-and-generative-ai-profile",
+      "arm": "markdown"
+    },
+    {
+      "id": "cross-ai-framework-and-readiness__anx",
+      "taskId": "cross-ai-framework-and-readiness",
+      "arm": "anx"
+    },
+    {
+      "id": "cross-ai-framework-and-readiness__markdown",
+      "taskId": "cross-ai-framework-and-readiness",
+      "arm": "markdown"
+    },
+    {
+      "id": "relationship-current-waiver-series__anx",
+      "taskId": "relationship-current-waiver-series",
+      "arm": "anx"
+    },
+    {
+      "id": "relationship-current-waiver-series__markdown",
+      "taskId": "relationship-current-waiver-series",
+      "arm": "markdown"
+    },
+    {
+      "id": "relationship-current-monetary-policy-report__anx",
+      "taskId": "relationship-current-monetary-policy-report",
+      "arm": "anx"
+    },
+    {
+      "id": "relationship-current-monetary-policy-report__markdown",
+      "taskId": "relationship-current-monetary-policy-report",
+      "arm": "markdown"
+    }
+  ]
+}
