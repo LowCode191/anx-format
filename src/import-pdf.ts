@@ -335,7 +335,7 @@ export async function importDocumentToAndoc(
     await mkdir(outputDirectory, { recursive: true })
     await writeFile(inputPath, sourceBytes)
     progress('source-staged', 8, 'Source retained and ready for immediate viewing.')
-    const timeoutSeconds = Math.max(30, Math.min(options.timeoutSeconds || 240, 600))
+    const timeoutSeconds = Math.max(30, Math.min(options.timeoutSeconds || boundedInteger(Number(process.env.ANX_DOCLING_TIMEOUT_SECONDS || process.env.AGN_DOCLING_TIMEOUT_SECONDS || 240), 30, 600, 240), 600))
     const doclingCommand = await resolveDoclingCommand(options.doclingCommand || process.env.ANX_DOCLING_BIN || process.env.AGN_DOCLING_BIN || process.env.ANDOC_DOCLING_BIN)
     const doclingCliVersion = await resolveDoclingCliVersion(doclingCommand)
     const doclingPageBatchSize = boundedInteger(options.doclingPageBatchSize ?? Number(process.env.ANX_DOCLING_PAGE_BATCH_SIZE || process.env.AGN_DOCLING_PAGE_BATCH_SIZE || 4), 1, 32, 4)
@@ -851,10 +851,16 @@ export function normalizeDoclingDocument(
   let chartBlocksWithData = 0
   let inferredNumberedHeadings = 0
 
+  const pageBreakOccurrences = new Map<number, number>()
   for (const [layoutIndex, candidate] of layoutItems.entries()) {
     if (currentPage !== null && candidate.page !== currentPage) {
+      // Office sources can report non-monotonic page numbers, so the same page can
+      // close more than once. The first break after a page keeps its historical id;
+      // repeats get an occurrence suffix so block ids stay unique and deterministic.
+      const occurrence = (pageBreakOccurrences.get(currentPage) || 0) + 1
+      pageBreakOccurrences.set(currentPage, occurrence)
       blocks.push({
-        id: stableId('page-break', sourceHash, `after-page-${currentPage}`),
+        id: stableId('page-break', sourceHash, occurrence === 1 ? `after-page-${currentPage}` : `after-page-${currentPage}-${occurrence}`),
         type: 'pageBreak',
         provenance: {
           kind: 'imported',

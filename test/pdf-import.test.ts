@@ -11,6 +11,7 @@ import {
   regionEvidenceState,
   transactAndocPackage,
   validateAndoc,
+  validateDocument,
   type AndocTransaction,
   type DoclingDocument,
 } from '../src/index.js'
@@ -631,4 +632,27 @@ test('a shared media metadata transaction preserves media and original PDF bytes
   assert.deepEqual(after.files[normalized.sourcePath], before.files[normalized.sourcePath])
   for (const asset of Object.values(before.document.assets)) assert.deepEqual(after.files[asset.packagePath], before.files[asset.packagePath])
   assert.equal((await validateAndoc(result.packageBytes)).ok, true)
+})
+
+test('Docling normalization keeps page-break block ids unique when Office page numbers are non-monotonic', () => {
+  const docxBytes = zipSync({ '[Content_Types].xml': strToU8('<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"/>') })
+  const pages = [1, 2, 1, 2, 1, 3]
+  const normalized = normalizeDoclingDocument({
+    schema_name: 'DoclingDocument',
+    version: '1.9.0',
+    name: 'office-report',
+    pages: { '1': {}, '2': {}, '3': {} },
+    body: { self_ref: '#/body', children: pages.map((_page, index) => ({ $ref: `#/texts/${index}` })) },
+    texts: pages.map((page, index) => ({
+      self_ref: `#/texts/${index}`,
+      label: 'text',
+      text: `Paragraph ${index + 1} reported on logical page ${page}.`,
+      prov: [{ page_no: page }],
+    })),
+  }, docxBytes, 'office-report.docx', importedAt, false, {}, {}, 'docx')
+  const ids = normalized.document.blocks.map(block => block.id)
+  assert.equal(new Set(ids).size, ids.length, 'every block id must be unique')
+  assert.equal(normalized.document.blocks.filter(block => block.type === 'pageBreak').length, pages.length - 1)
+  const validation = validateDocument(normalized.document)
+  assert.equal(validation.ok, true, JSON.stringify(validation.issues))
 })
