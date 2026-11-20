@@ -3,6 +3,7 @@ import path from 'node:path'
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import * as z from 'zod/v4'
+import { confinedPath } from './path-confinement.js'
 import { andocCite, anxRelationships } from './agent-tools.js'
 import { appendAnxEvidenceTrace } from './agent-evidence-trace.js'
 import {
@@ -22,7 +23,7 @@ const allowedRoot = path.resolve(process.env.ANX_ALLOWED_ROOT || process.cwd())
 const evidenceTracePath = configuredEvidenceTracePath()
 const toolProfile = configuredAnxEvidenceToolProfile()
 const compactTableTransport = toolProfile === 'table-answer'
-const server = new McpServer({ name: 'anx-evidence', version: '0.4.0' })
+const server = new McpServer({ name: 'anx-evidence', version: '0.4.2' })
 const documentPathSchema = z.string().min(1)
   .describe('Path to a canonical .anx document inside the configured read-only workspace')
 const regionKindSchema = z.enum([
@@ -153,9 +154,7 @@ if (anxEvidenceToolEnabled(toolProfile, 'anx_cite')) server.registerTool('anx_ci
 )))
 
 function allowedDocumentPath(value: string): string {
-  const resolved = path.resolve(value)
-  const relative = path.relative(allowedRoot, resolved)
-  if (relative.startsWith('..') || path.isAbsolute(relative)) throw new Error(`Path is outside the configured read-only ANX workspace: ${value}`)
+  const resolved = confinedPath(allowedRoot, value, 'read-only ANX workspace')
   const extension = path.extname(resolved).toLowerCase()
   if (!['.anx', '.anxd', '.agn', '.andoc'].includes(extension)) {
     throw new Error(`Expected an .anx path (legacy .anxd, .agn, and .andoc are also accepted): ${value}`)

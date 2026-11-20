@@ -3,6 +3,7 @@ import path from 'node:path'
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import * as z from 'zod/v4'
+import { confinedPath } from './path-confinement.js'
 import {
   andocApply,
   andocCite,
@@ -37,7 +38,7 @@ import {
 import { ANX_RELATIONSHIP_TYPES } from './relationships.js'
 
 const allowedRoot = path.resolve(process.env.ANX_ALLOWED_ROOT || process.env.AGN_ALLOWED_ROOT || process.env.ANDOC_ALLOWED_ROOT || process.cwd())
-const server = new McpServer({ name: 'anx', version: '0.4.0' })
+const server = new McpServer({ name: 'anx', version: '0.4.2' })
 const documentPathSchema = z.string().min(1).describe('Path to a canonical .anx document (legacy .anxd, .agn, and .andoc documents are also readable) inside the configured workspace')
 const actorIdSchema = z.string().min(1).optional().describe('Stable identity for the agent making the change')
 const messageSchema = z.string().min(1).optional().describe('Concise audit message explaining the requested change')
@@ -484,8 +485,7 @@ server.registerTool('andoc_export_pdf', {
 )))
 
 function allowedPath(value: string, extension?: string): string {
-  const resolved = path.resolve(allowedRoot, value)
-  if (resolved !== allowedRoot && !resolved.startsWith(`${allowedRoot}${path.sep}`)) throw new Error(`Path is outside the configured ANX workspace: ${value}`)
+  const resolved = confinedPath(allowedRoot, value, 'ANX workspace')
   if (extension && path.extname(resolved).toLowerCase() !== extension) throw new Error(`Expected a ${extension} path: ${value}`)
   return resolved
 }

@@ -101,11 +101,16 @@ export async function packAndoc(input: PackageInput, outputPath?: string): Promi
     if (versionBaseline.revision > input.document.revision) throw new Error('ANX version baseline cannot be newer than the current document')
   }
 
+  // The view is rendered from the canonical serialization, not from the caller's
+  // object. The renderer embeds some values as JSON (a chart specification), so key
+  // order matters: rendering the same bytes a reader will parse makes the stored view
+  // equal to a fresh render of document.json, which humanViewStatus relies on.
+  const documentJson = canonicalJson(input.document)
   const files: Record<string, Uint8Array> = {
     [MIME_PATH]: strToU8(ANX_MEDIA_TYPE),
-    [DOCUMENT_PATH]: strToU8(canonicalJson(input.document)),
+    [DOCUMENT_PATH]: strToU8(documentJson),
     [HISTORY_PATH]: strToU8(renderTransactions(transactions)),
-    [HTML_PATH]: strToU8(renderHtml(input.document)),
+    [HTML_PATH]: strToU8(renderHtml(JSON.parse(documentJson) as AndocDocument)),
   }
   if (versionBaseline) files[ANX_VERSION_BASELINE_PATH] = strToU8(canonicalJson(versionBaseline))
   if (input.profiles) {
@@ -205,6 +210,40 @@ function decodeAndoc(bytes: Uint8Array): AndocPackage {
   }
 }
 
+export interface HumanViewStatus {
+  path: typeof HTML_PATH
+  /** True when the stored view is byte-identical to this renderer's output for the canonical document. */
+  matchesCanonical: boolean
+  storedSha256: string | null
+  renderedSha256: string
+  guidance: string
+}
+
+/**
+ * Compares the package's stored human view with a fresh render of document.json.
+ *
+ * The stored view is a cache. Its manifest hash proves only that the bytes are the
+ * ones the package's author put there, not that they show the canonical content: a
+ * package written by another tool, or by an older renderer, can carry a view that
+ * differs. Readers must render from document.json and must not treat the stored view
+ * as the document, and a finalization that signs the view's hash does not vouch for it.
+ */
+export function humanViewStatus(pkg: Pick<AndocPackage, 'document' | 'files'>): HumanViewStatus {
+  const stored = pkg.files[HTML_PATH]
+  const storedSha256 = stored ? sha256(stored) : null
+  const renderedSha256 = sha256(strToU8(renderHtml(pkg.document)))
+  const matchesCanonical = storedSha256 === renderedSha256
+  return {
+    path: HTML_PATH,
+    matchesCanonical,
+    storedSha256,
+    renderedSha256,
+    guidance: matchesCanonical
+      ? 'The stored view is this renderer\'s output for the canonical document.'
+      : 'The stored view was not produced by this renderer from the canonical document (another writer, an older renderer, or altered content). Render from document.json; do not treat the stored view as the document.',
+  }
+}
+
 export async function repackAndocPackage(
   pkg: AndocPackage,
   overrides: Partial<Pick<PackageInput, 'document' | 'versionBaseline' | 'transactions' | 'profiles' | 'lineage' | 'finalizations' | 'sourceBaselines'>> = {},
@@ -272,6 +311,12 @@ function validateAndocFiles(files: Record<string, Uint8Array>): ValidationResult
   const mediaType = strFromU8(files[MIME_PATH] || new Uint8Array())
   if (mediaType !== ANX_MEDIA_TYPE && mediaType !== LEGACY_AGN_MEDIA_TYPE && mediaType !== LEGACY_ANDOC_MEDIA_TYPE) {
     issues.push({ code: 'invalid_mimetype', path: MIME_PATH, message: `Expected ${ANX_MEDIA_TYPE} (legacy ${LEGACY_AGN_MEDIA_TYPE} and ${LEGACY_ANDOC_MEDIA_TYPE} are also accepted)` })
+  }
+
+  // The contract requires these two entries in every package (Developer Preview 0.4, section 2).
+  // manifest.json and document.json are reported by their own parse step below.
+  for (const requiredPath of [HISTORY_PATH, HTML_PATH]) {
+    if (!files[requiredPath]) issues.push({ code: 'missing_required_entry', path: requiredPath, message: 'Required package entry is missing' })
   }
 
   const manifestValue = parseJson(files[MANIFEST_PATH], MANIFEST_PATH, issues)

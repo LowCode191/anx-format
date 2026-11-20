@@ -20,6 +20,7 @@ import {
   ANDOC_PROFILE_PATH,
   ANX_SOURCE_BASELINES_PATH,
   packAndoc,
+  humanViewStatus,
   readAndoc,
   repackAndocPackage,
   type AndocPackage,
@@ -106,6 +107,12 @@ export interface FinalizationVerification {
   revision: number
   finalizationId?: string
   contentMatches: boolean
+  /**
+   * Whether the stored human view equals this renderer's output for the canonical
+   * document. A valid signature covers the stored view's hash, not its meaning: when
+   * this is false, show a view rendered from document.json, never the stored one.
+   */
+  humanViewMatchesCanonical: boolean
   signatureResults: SignatureVerification[]
   policy: {
     id?: string
@@ -369,6 +376,7 @@ export async function verifyAndocFinalization(
       documentId: pkg.document.documentId,
       revision: pkg.document.revision,
       contentMatches: false,
+      humanViewMatchesCanonical: humanViewStatus(pkg).matchesCanonical,
       signatureResults: [],
       policy: emptyPolicy,
       trustedTime: false,
@@ -418,6 +426,7 @@ export async function verifyAndocFinalization(
     revision: pkg.document.revision,
     finalizationId: record.id,
     contentMatches,
+    humanViewMatchesCanonical: humanViewStatus(pkg).matchesCanonical,
     signatureResults,
     policy: {
       id: record.policy.id,

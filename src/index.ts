@@ -31,6 +31,7 @@ export * from './agent-response.js'
 export * from './agent-evidence-trace.js'
 export * from './agent-tools.js'
 export * from './transaction.js'
+export * from './protected-metadata.js'
 export * from './validate.js'
 export * from './viewer-server.js'
 

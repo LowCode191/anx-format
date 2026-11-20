@@ -34,6 +34,7 @@ import {
   exportAnxJsonl,
   exportAnxMarkdown,
   packAndoc,
+  humanViewStatus,
   readAndoc,
   repackAndocPackage,
   renderHtml,
@@ -440,10 +441,11 @@ async function main(): Promise<void> {
   if (command === 'validate') {
     const [inputPath] = args
     requireArgs(command, [inputPath])
-    const result = ['.anx', '.anxd', '.agn', '.andoc'].includes(path.extname(inputPath!).toLowerCase())
+    const isPackagePath = ['.anx', '.anxd', '.agn', '.andoc'].includes(path.extname(inputPath!).toLowerCase())
+    const result = isPackagePath
       ? await validateAndoc(inputPath!)
       : validateDocument(await readJson<unknown>(inputPath!))
-    print(result)
+    print(isPackagePath && result.ok ? { ...result, humanView: humanViewStatus(await readAndoc(inputPath!)) } : result)
     if (!result.ok) process.exitCode = 1
     return
   }

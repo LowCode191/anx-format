@@ -1,6 +1,7 @@
 import type { AndocBlock, AndocDocument, AndocTransaction, Provenance, TableBlock, TableCell } from './types.js'
 import { chartDataIssues } from './chart-data.js'
 import { sha256 } from './hash.js'
+import { assertMetadataAuthority } from './protected-metadata.js'
 import { validateDocument, validateTransaction } from './validate.js'
 
 export class RevisionConflictError extends Error {
@@ -267,6 +268,8 @@ export function applyTransaction(document: AndocDocument, transaction: AndocTran
       next.metadata = structuredClone(operation.metadata)
     }
   }
+
+  assertMetadataAuthority(document, next, transaction.actor)
 
   next.revision += 1
   next.updatedAt = transaction.timestamp

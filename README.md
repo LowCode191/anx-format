@@ -99,7 +99,7 @@ Example client configuration:
 }
 ```
 
-Paths outside `ANX_ALLOWED_ROOT` are refused. The servers never accept private signing keys; finalization and cosigning are local CLI operations.
+Paths outside `ANX_ALLOWED_ROOT` are refused, including through symbolic links. A transaction from an agent cannot change release state, approvals or other records of human authority. The servers never accept private signing keys; finalization and cosigning are local CLI operations.
 
 ## SDK
 
@@ -130,7 +130,7 @@ Legacy `AGN_*` and `ANDOC_*` names are still read.
 
 ## Testing and evidence
 
-Continuous integration runs on every push and pull request on Node 22 and 24 with Python 3.12 ([ci.yml](.github/workflows/ci.yml)). `npm run check` builds `dist/` and runs the product test suite: 164 tests in 31 files under `test/`, all against self-made fixtures. CI then runs the ANX-C3 conformance check on `examples/sample.anx`, a CLI smoke (pack, validate, migrate, outline) and a type-check of the benchmark harness.
+Continuous integration runs on every push and pull request on Node 22 and 24 with Python 3.12 ([ci.yml](.github/workflows/ci.yml)). `npm run check` builds `dist/` and runs the product test suite: 175 tests in 32 files under `test/`, all against self-made fixtures. CI then runs the ANX-C3 conformance check on `examples/sample.anx`, a CLI smoke (pack, validate, migrate, outline) and a type-check of the benchmark harness.
 
 Run the same locally:
 
@@ -164,7 +164,7 @@ The reference runner covers C1 to C3. C4 and C5 need adapter-specific fixtures. 
 
 ## Safety profile
 
-Every package is treated as hostile input. Readers reject traversal, absolute paths, duplicate or undeclared entries, hash and size mismatches, encrypted entries, multi-disk archives, ZIP64 and declared expansion beyond the 0.4 profile (96 MiB compressed, 256 MiB expanded, 64 MiB per entry, 2,048 entries) before decompression. The viewer binds to loopback only. OCR candidates are never promoted into canonical content automatically. See [SECURITY.md](SECURITY.md).
+Every package is treated as hostile input. Readers reject traversal, absolute paths, duplicate or undeclared entries, hash and size mismatches, encrypted entries, multi-disk archives, ZIP64 and declared expansion beyond the 0.4 profile (96 MiB compressed, 256 MiB expanded, 64 MiB per entry, 2,048 entries) before decompression. The viewer binds to loopback only, renders the view itself from the canonical document, and runs it in a sandbox. OCR candidates are never promoted into canonical content automatically. See [SECURITY.md](SECURITY.md).
 
 ## Repository layout
 

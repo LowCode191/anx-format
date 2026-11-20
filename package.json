@@ -1,6 +1,6 @@
 {
   "name": "anx-format",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "ANX (Agent Native eXtensible): an open single-file document format with a canonical structured model, retained sources, stable node IDs and revision-checked transactions. Reference SDK, CLI, conformance runner, read-only viewer and MCP servers.",
   "license": "Apache-2.0",
   "author": "LowCode191",
