@@ -29,6 +29,7 @@ import {
   recordReviewApprovalTransaction,
   releaseControlState,
   sha256,
+  transactAndocPackage,
   validateAndoc,
   verifyAndocFinalization,
   type AndocActor,
@@ -304,6 +305,32 @@ test('an agent cannot write human page-object corrections, and the guarded keys 
   assert.deepEqual([...HUMAN_ONLY_METADATA_KEYS], ['anxReleaseControl', ANX_REGION_CORRECTIONS_METADATA_KEY])
   assert.deepEqual([...HUMAN_DECISION_METADATA_KEYS], [AGN_REVIEW_METADATA_KEY, ANX_RELATIONSHIPS_METADATA_KEY])
   assert('anxReleaseControl' in applyTransaction(document, setMetadata(document, human, { anxReleaseControl: releaseControlState(document) })).metadata)
+})
+
+test('stored history written before the rule still replays, and new writes are still refused', async () => {
+  const baseline = await fixtureDocument()
+  const forged = { ...releaseControlState(baseline), state: 'released', releaseRevision: '7' }
+  // Packages written by 0.4.1 and earlier can hold transactions like these in their history.
+  const bySystem = setMetadata(baseline, { type: 'system', id: 'release-service' }, { anxReleaseControl: forged })
+  assertProtected(() => applyTransaction(baseline, bySystem), 'anxReleaseControl')
+  const afterSystem = applyTransaction(baseline, bySystem, { replay: true })
+  const byAgent = setMetadata(afterSystem, agent, { [ANX_REGION_CORRECTIONS_METADATA_KEY]: { schema: 'anx.region-corrections.v1', entries: [] } })
+  const current = applyTransaction(afterSystem, byAgent, { replay: true })
+  assert.equal(current.revision, 2)
+
+  const packageBytes = await packAndoc({ document: current, transactions: [bySystem, byAgent], versionBaseline: baseline })
+  const validation = await validateAndoc(packageBytes)
+  assert.deepEqual(validation.issues, [])
+  const pkg = await readAndoc(packageBytes)
+  assert.equal(pkg.transactions.length, 2)
+  assert.equal((pkg.document.metadata.anxReleaseControl as { state: string }).state, 'released')
+
+  // Reading old history does not relax the rule for the next write.
+  assertProtected(() => applyTransaction(pkg.document, setMetadata(pkg.document, agent, { anxReleaseControl: { ...forged, releaseRevision: '8' } })), 'anxReleaseControl')
+  await assert.rejects(transactAndocPackage(pkg, setMetadata(pkg.document, agent, { anxReleaseControl: { ...forged, releaseRevision: '8' } })), ProtectedMetadataError)
+  const next = await transactAndocPackage(pkg, setMetadata(pkg.document, agent, { purpose: 'ordinary agent edit' }))
+  assert.equal(next.document.revision, 3)
+  assert.equal((await validateAndoc(next.packageBytes)).ok, true)
 })
 
 test('path confinement follows symbolic links', async () => {

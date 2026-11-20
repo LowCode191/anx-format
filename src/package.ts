@@ -383,7 +383,7 @@ function validateAndocFiles(files: Record<string, Uint8Array>): ValidationResult
         }
         if (replayComplete) {
           try {
-            replayed = applyTransaction(replayed, matches[0]!)
+            replayed = applyTransaction(replayed, matches[0]!, { replay: true })
           } catch (error) {
             issues.push({ code: 'version_history_replay_failed', path: HISTORY_PATH, message: `Version history failed to replay revision ${revision}: ${error instanceof Error ? error.message : String(error)}` })
             replayComplete = false

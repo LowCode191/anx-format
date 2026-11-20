@@ -33,7 +33,18 @@ export class TextCandidateContentMismatchError extends Error {
   }
 }
 
-export function applyTransaction(document: AndocDocument, transaction: AndocTransaction): AndocDocument {
+export interface ApplyTransactionOptions {
+  /**
+   * Set when re-applying a transaction that is already in a package's stored history.
+   * Replay reproduces the recorded result; it does not judge again who was allowed to
+   * write it. The protected-metadata rule is a gate on new writes: packages written
+   * before the rule existed can hold history from agent, system or import actors that
+   * it would refuse, and they must still read. Never set this for a new write.
+   */
+  replay?: boolean
+}
+
+export function applyTransaction(document: AndocDocument, transaction: AndocTransaction, options: ApplyTransactionOptions = {}): AndocDocument {
   const transactionValidation = validateTransaction(transaction)
   if (!transactionValidation.ok) {
     throw new Error(`Invalid transaction: ${transactionValidation.issues.map(issue => `${issue.path} ${issue.message}`).join('; ')}`)
@@ -269,7 +280,7 @@ export function applyTransaction(document: AndocDocument, transaction: AndocTran
     }
   }
 
-  assertMetadataAuthority(document, next, transaction.actor)
+  if (!options.replay) assertMetadataAuthority(document, next, transaction.actor)
 
   next.revision += 1
   next.updatedAt = transaction.timestamp

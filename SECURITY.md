@@ -14,7 +14,7 @@ Only the current Developer Preview line (0.4.x) receives fixes. Use 0.4.2 or lat
 - Manifest hashes and sizes are validated before canonical content is used.
 - The viewer serves canonical JSON, declared assets and a view it renders itself from the validated canonical document, read-only on the loopback interface. It never serves the package's stored view. The rendered view runs in a sandbox under a Content-Security-Policy that allows only the renderer's own script, assets other than common image types are sent as downloads, and requests with an unknown `Host` are refused. It has no mutation endpoint and strips unsafe link schemes.
 - The MCP servers confine paths to `ANX_ALLOWED_ROOT`, following symbolic links, require the expected revision for mutations and never accept private signing keys.
-- Transactions from a non-human actor cannot change release state, review approvals and decisions, human-approved relationships or human page-object corrections.
+- New transactions from a non-human actor cannot change release state, review approvals and decisions, human-approved relationships or human page-object corrections. Stored history is replayed as recorded and is not judged again.
 - Imported source bytes are immutable; OCR candidates are never promoted automatically.
 
 ## What it does not claim

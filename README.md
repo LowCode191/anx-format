@@ -130,7 +130,7 @@ Legacy `AGN_*` and `ANDOC_*` names are still read.
 
 ## Testing and evidence
 
-Continuous integration runs on every push and pull request on Node 22 and 24 with Python 3.12 ([ci.yml](.github/workflows/ci.yml)). `npm run check` builds `dist/` and runs the product test suite: 175 tests in 32 files under `test/`, all against self-made fixtures. CI then runs the ANX-C3 conformance check on `examples/sample.anx`, a CLI smoke (pack, validate, migrate, outline) and a type-check of the benchmark harness.
+Continuous integration runs on every push and pull request on Node 22 and 24 with Python 3.12 ([ci.yml](.github/workflows/ci.yml)). `npm run check` builds `dist/` and runs the product test suite: 176 tests in 32 files under `test/`, all against self-made fixtures. CI then runs the ANX-C3 conformance check on `examples/sample.anx`, a CLI smoke (pack, validate, migrate, outline) and a type-check of the benchmark harness.
 
 Run the same locally:
 
