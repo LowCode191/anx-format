@@ -99,7 +99,7 @@ Example client configuration:
 }
 ```
 
-Paths outside `ANX_ALLOWED_ROOT` are refused, including through symbolic links. A transaction from an agent cannot change release state, approvals or other records of human authority. The servers never accept private signing keys; finalization and cosigning are local CLI operations.
+Paths outside `ANX_ALLOWED_ROOT` are refused, including through symbolic links. The agent tools refuse transactions that would change release state, approvals or other records of human authority. The servers never accept private signing keys; finalization and cosigning are local CLI operations.
 
 ## SDK
 
